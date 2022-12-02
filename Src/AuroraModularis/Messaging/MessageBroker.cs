@@ -14,13 +14,14 @@ internal class MessageBroker
         {
             while (true)
             {
+                var message = await _.Receive();
                 foreach (var inbox in inboxes)
                 {
-                    inbox.InvokeIfPresent(await _.Receive());
+                    inbox.InvokeIfPresent(message);
                 }
             }
         });
-        mailboxProcessor.Errors.Subscribe(OnError);
+        //    mailboxProcessor.Errors.Subscribe(OnError);
     }
 
     internal void AddInbox(Inbox inbox)

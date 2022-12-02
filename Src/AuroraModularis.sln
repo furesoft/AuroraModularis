@@ -20,7 +20,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestConsole.Modules.Logging
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestConsole", "TestApp\TestConsole\TestConsole.csproj", "{9EB09B7F-CEC9-4C1A-A01E-BC93F316C9D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsole.Modules.Producer", "TestApp\Modules\TestConsole.Modules.Producer\TestConsole.Modules.Producer.csproj", "{A153B9DB-2944-42B6-9B86-0A769FFF03E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestConsole.Modules.Producer", "TestApp\Modules\TestConsole.Modules.Producer\TestConsole.Modules.Producer.csproj", "{A153B9DB-2944-42B6-9B86-0A769FFF03E3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{6DD0A79D-647E-4E91-85D2-3967D398F134}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

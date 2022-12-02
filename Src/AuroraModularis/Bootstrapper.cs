@@ -19,9 +19,6 @@ public class Bootstrapper
         TinyIoCContainer.Current.AutoRegister();
         moduleLoader.Init(TinyIoCContainer.Current);
 
-        foreach (var module in moduleLoader.Modules)
-        {
-            await module.OnStart();
-        }
+        Task.WaitAll(moduleLoader.Modules.Select(_ => _.OnStart()).ToArray());
     }
 }
