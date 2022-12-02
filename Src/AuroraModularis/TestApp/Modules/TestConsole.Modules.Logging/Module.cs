@@ -1,25 +1,7 @@
-﻿using AuroraModularis;
-using Microsoft.Extensions.DependencyInjection;
-
-namespace TestConsole.Modules.Logging
+﻿namespace TestConsole.Modules.Logging
 {
-    public class Module : IModule
+    public class Module : AuroraModularis.Module
     {
-        public Guid ID => Guid.NewGuid();
-
-        public string Name => "Logging";
-
-        public void Init(IServiceCollection services)
-        {
-            services.AddLogging();
-        }
-
-        public void OnLoad()
-        {
-        }
-
-        public void OnUnload()
-        {
-        }
+        public override string Name => "Logging";
     }
 }

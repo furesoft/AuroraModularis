@@ -5,17 +5,19 @@ namespace AuroraModularis;
 
 public class ModuleLoader
 {
-    public Dictionary<IModule, AssemblyLoadContext> Modules { get; set; } = new();
+    public Dictionary<Module, AssemblyLoadContext> Modules { get; set; } = new();
 
-    public IModule Load(string path)
+    public Module Load(string path)
     {
         var loadContext = new AssemblyLoadContext(null);
         loadContext.LoadFromAssemblyPath(path);
 
-        var moduleType = loadContext.Assemblies.FirstOrDefault().GetTypes().FirstOrDefault(_ => _.IsAssignableFrom(typeof(IModule)));
+        var moduleType = loadContext.Assemblies.FirstOrDefault().GetTypes().FirstOrDefault(_ => _.IsAssignableFrom(typeof(Module)));
         if (moduleType != null)
         {
-            var moduleInstance = (IModule)Activator.CreateInstance(moduleType);
+            var moduleInstance = (Module)Activator.CreateInstance(moduleType);
+            moduleInstance.ID = Guid.NewGuid();
+
             Modules.Add(moduleInstance, loadContext);
 
             return moduleInstance;
@@ -56,7 +58,7 @@ public class ModuleLoader
         UnloadModule(module);
     }
 
-    private void UnloadModule(IModule? module)
+    private void UnloadModule(Module? module)
     {
         module.OnUnload();
 
