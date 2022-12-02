@@ -4,6 +4,14 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>AuroraModularis</Title>
+    <Authors>furesoft</Authors>
+    <Description>A framework to make modular monolith applications</Description>
+    <PackageProjectUrl>https://github.com/furesoft/AuroraModularis</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/furesoft/AuroraModularis</RepositoryUrl>
+    <PackageTags>modular;monolith;framework</PackageTags>
+    <IncludeSymbols>True</IncludeSymbols>
   </PropertyGroup>
 
   <ItemGroup>
