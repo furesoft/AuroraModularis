@@ -9,10 +9,10 @@ public class ModuleLoader
 
     public Module Load(string path)
     {
-        var loadContext = new AssemblyLoadContext(null);
+        var loadContext = new AssemblyLoadContext(null, true);
         loadContext.LoadFromAssemblyPath(path);
 
-        var moduleType = loadContext.Assemblies.FirstOrDefault().GetTypes().FirstOrDefault(_ => _.IsAssignableFrom(typeof(Module)));
+        var moduleType = loadContext.Assemblies.FirstOrDefault().GetTypes().FirstOrDefault(_ => _.IsAssignableTo(typeof(Module)));
         if (moduleType != null)
         {
             var moduleInstance = (Module)Activator.CreateInstance(moduleType);

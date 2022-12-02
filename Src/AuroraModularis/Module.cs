@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using AuroraModularis.Messaging;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace AuroraModularis;
 
@@ -6,6 +7,9 @@ public abstract class Module
 {
     public Guid ID { get; set; }
     public abstract string Name { get; }
+
+    public Inbox Inbox { get; internal set; }
+    public Outbox Outbox { get; internal set; }
 
     public virtual void Init(IServiceCollection services)
     {
