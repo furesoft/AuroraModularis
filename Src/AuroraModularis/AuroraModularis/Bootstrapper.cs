@@ -1,5 +1,4 @@
-﻿using MediatR;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
 namespace AuroraModularis;
@@ -21,8 +20,6 @@ public class Bootstrapper
         }
 
         assemblies.Add(Assembly.GetExecutingAssembly());
-
-        services.AddMediatR(assemblies.ToArray());
 
         var provider = services.BuildServiceProvider();
         //ToDo: implement InBox, OutBox, MessageBroker, ...
