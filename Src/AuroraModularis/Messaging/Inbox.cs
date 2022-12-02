@@ -7,7 +7,6 @@ public class Inbox
     internal Inbox(MessageBroker messageBroker)
     {
         this.messageBroker = messageBroker;
-        messageBroker.RegisterInbox(this);
     }
 
     public void Subscribe<T>(Action<T> callback)
@@ -18,5 +17,11 @@ public class Inbox
     public void Subscribe<T, U>(Func<T, U> callback)
     {
         messageBroker.Subscribe(_ => callback((T)_));
+    }
+
+    public void AddHandler<T, U>()
+        where T : IMessageHandler<U>, new()
+    {
+        Subscribe<U>(new T().Subscribe);
     }
 }

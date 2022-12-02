@@ -17,11 +17,6 @@ internal class MessageBroker
         throw new NotImplementedException();
     }
 
-    internal void RegisterInbox(Inbox inbox)
-    {
-        throw new NotImplementedException();
-    }
-
     internal void Subscribe<T>(Func<object, T> value)
     {
         throw new NotImplementedException();
