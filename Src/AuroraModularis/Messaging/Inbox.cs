@@ -2,18 +2,21 @@
 
 public class Inbox
 {
-    internal Inbox()
-    {
+    private readonly MessageBroker messageBroker;
 
+    internal Inbox(MessageBroker messageBroker)
+    {
+        this.messageBroker = messageBroker;
+        messageBroker.RegisterInbox(this);
     }
 
     public void Subscribe<T>(Action<T> callback)
     {
-
+        messageBroker.Subscribe<T>(_ => callback((T)_));
     }
 
-    public U Subscribe<T, U>(Func<T, U> callback)
+    public void Subscribe<T, U>(Func<T, U> callback)
     {
-        return default;
+        messageBroker.Subscribe(_ => callback((T)_));
     }
 }

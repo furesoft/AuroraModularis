@@ -1,18 +1,21 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using AuroraModularis.Messaging;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace AuroraModularis;
 
 public class Bootstrapper
 {
-    private static ModuleLoader moduleLoader = new();
-
     public static void Run(string modulesPath)
     {
         var services = new ServiceCollection();
+        ModuleLoader moduleLoader = new();
 
+        services.AddTransient(_ => moduleLoader);
+
+        var messageBroker = new MessageBroker();
         foreach (var modPath in Directory.GetFiles(modulesPath, "*.dll"))
         {
-            moduleLoader.Load(modPath);
+            moduleLoader.Load(modPath, messageBroker);
         }
 
         var provider = services.BuildServiceProvider();

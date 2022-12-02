@@ -1,13 +1,14 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using AuroraModularis.Messaging;
+using Microsoft.Extensions.DependencyInjection;
 using System.Runtime.Loader;
 
 namespace AuroraModularis;
 
-public class ModuleLoader
+internal class ModuleLoader
 {
     public Dictionary<Module, AssemblyLoadContext> Modules { get; set; } = new();
 
-    public Module Load(string path)
+    public Module Load(string path, MessageBroker messageBroker)
     {
         var loadContext = new AssemblyLoadContext(null, true);
         loadContext.LoadFromAssemblyPath(path);
@@ -17,6 +18,8 @@ public class ModuleLoader
         {
             var moduleInstance = (Module)Activator.CreateInstance(moduleType);
             moduleInstance.ID = Guid.NewGuid();
+            moduleInstance.Inbox = new(messageBroker);
+            moduleInstance.Outbox = new(messageBroker);
 
             Modules.Add(moduleInstance, loadContext);
 
