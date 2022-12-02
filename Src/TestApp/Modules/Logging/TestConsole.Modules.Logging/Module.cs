@@ -1,19 +1,18 @@
 ﻿using AuroraModularis.Messaging;
-using Microsoft.Extensions.DependencyInjection;
-using TestModule.Models;
 
-namespace TestConsole.Modules.Logging
+namespace TestConsole.Modules.Logging;
+
+public class Module : AuroraModularis.Module
 {
-    public class Module : AuroraModularis.Module
-    {
-        public override string Name => "Logging";
+    public override string Name => "Logging";
 
-        public override void Init(IServiceCollection services)
+    public override Task OnStart()
+    {
+        Inbox.Subscribe<string>(_ =>
         {
-            Inbox.Subscribe<LoggingMessage>(_ =>
-            {
-                Console.WriteLine(_.Message);
-            });
-        }
+            Console.WriteLine(_);
+        });
+
+        return Task.CompletedTask;
     }
 }

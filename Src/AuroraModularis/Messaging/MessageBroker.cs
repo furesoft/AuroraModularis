@@ -1,15 +1,36 @@
-﻿namespace AuroraModularis.Messaging;
+﻿using Actress;
+using System.Collections.Concurrent;
+
+namespace AuroraModularis.Messaging;
 
 internal class MessageBroker
 {
-    internal void Broadcast(object message)
+    private ConcurrentBag<Inbox> inboxes = new();
+    private MailboxProcessor<object> mailboxProcessor;
+
+    public void Start()
     {
-        throw new NotImplementedException();
+        mailboxProcessor = MailboxProcessor.Start<object>(async _ =>
+        {
+            while (true)
+            {
+                foreach (var inbox in inboxes)
+                {
+                    inbox.InvokeIfPresent(await _.Receive());
+                }
+            }
+        });
+        mailboxProcessor.Errors.Subscribe(OnError);
+    }
+
+    internal void AddInbox(Inbox inbox)
+    {
+        inboxes.Add(inbox);
     }
 
     internal void Post(object message)
     {
-        throw new NotImplementedException();
+        mailboxProcessor.Post(message);
     }
 
     internal Task<object> PostAndGet(object message)
@@ -17,12 +38,8 @@ internal class MessageBroker
         throw new NotImplementedException();
     }
 
-    internal void Subscribe<T>(Func<object, T> value)
+    private void OnError(Exception error)
     {
-        throw new NotImplementedException();
-    }
-
-    internal void Subscribe<T>(Action<object> callback)
-    {
+        Post(error);
     }
 }

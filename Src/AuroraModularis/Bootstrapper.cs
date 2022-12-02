@@ -1,24 +1,27 @@
 ﻿using AuroraModularis.Messaging;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace AuroraModularis;
 
 public class Bootstrapper
 {
-    public static void Run(string modulesPath)
+    public static async Task RunAsync(string modulesPath)
     {
-        var services = new ServiceCollection();
         ModuleLoader moduleLoader = new();
 
-        services.AddTransient(_ => moduleLoader);
-
         var messageBroker = new MessageBroker();
+        messageBroker.Start();
+
         foreach (var modPath in Directory.GetFiles(modulesPath, "*.dll"))
         {
             moduleLoader.Load(modPath, messageBroker);
         }
 
-        var provider = services.BuildServiceProvider();
-        //ToDo: implement InBox, OutBox, MessageBroker, ...
+        TinyIoCContainer.Current.AutoRegister();
+        moduleLoader.Init(TinyIoCContainer.Current);
+
+        foreach (var module in moduleLoader.Modules)
+        {
+            await module.OnStart();
+        }
     }
 }

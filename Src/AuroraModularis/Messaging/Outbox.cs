@@ -11,11 +11,6 @@ public class Outbox
         this.messageBroker = messageBroker;
     }
 
-    public void Broadcast<T>(T message)
-    {
-        messageBroker.Broadcast(message);
-    }
-
     public void Post<T>(T message)
     {
         messageBroker.Post(message);

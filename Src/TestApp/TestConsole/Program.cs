@@ -4,9 +4,13 @@ namespace TestConsole
 {
     internal class Program
     {
-        private static void Main(string[] args)
+        private static Task Main(string[] args)
         {
-            Bootstrapper.Run(Environment.CurrentDirectory);
+            return Bootstrapper.RunAsync(Environment.CurrentDirectory);
+
+            while (true)
+            {
+            }
         }
     }
 }

@@ -1,27 +1,24 @@
 ﻿using AuroraModularis.Messaging;
-using Microsoft.Extensions.DependencyInjection;
-using System.Runtime.Loader;
+using System.Collections.Concurrent;
+using System.Reflection;
 
 namespace AuroraModularis;
 
 internal class ModuleLoader
 {
-    public Dictionary<Module, AssemblyLoadContext> Modules { get; set; } = new();
+    public ConcurrentBag<Module> Modules { get; set; } = new();
 
     public Module Load(string path, MessageBroker messageBroker)
     {
-        var loadContext = new AssemblyLoadContext(null, true);
-        loadContext.LoadFromAssemblyPath(path);
-
-        var moduleType = loadContext.Assemblies.FirstOrDefault().GetTypes().FirstOrDefault(_ => _.IsAssignableTo(typeof(Module)));
+        var moduleType = Assembly.LoadFrom(path).GetTypes().FirstOrDefault(type => !type.IsAbstract && type.IsAssignableTo(typeof(Module)));
         if (moduleType != null)
         {
-            var moduleInstance = (Module)Activator.CreateInstance(moduleType);
+            var moduleInstance = (Module)TinyIoCContainer.Current.Resolve(moduleType);
             moduleInstance.ID = Guid.NewGuid();
             moduleInstance.Inbox = new(messageBroker);
             moduleInstance.Outbox = new(messageBroker);
 
-            Modules.Add(moduleInstance, loadContext);
+            Modules.Add(moduleInstance);
 
             return moduleInstance;
         }
@@ -29,44 +26,11 @@ internal class ModuleLoader
         return null;
     }
 
-    public void Init(IServiceCollection services)
+    public void Init(TinyIoCContainer container)
     {
         foreach (var module in Modules)
         {
-            module.Key.Init(services);
+            module.RegisterServices(container);
         }
-    }
-
-    public void Unload(Guid id)
-    {
-        var module = Modules.Keys.FirstOrDefault(_ => _.ID == id);
-
-        if (module == null)
-        {
-            throw new KeyNotFoundException($"Module with id '{id}' not found");
-        }
-
-        UnloadModule(module);
-    }
-
-    public void Unload(string name)
-    {
-        var module = Modules.Keys.FirstOrDefault(_ => _.Name == name);
-
-        if (module == null)
-        {
-            throw new KeyNotFoundException($"Module '{name}' not found");
-        }
-
-        UnloadModule(module);
-    }
-
-    private void UnloadModule(Module? module)
-    {
-        module.OnUnload();
-
-        Modules[module].Unload();
-
-        Modules.Remove(module);
     }
 }
