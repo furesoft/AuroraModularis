@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33110.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuroraModularis", "AuroraModularis\AuroraModularis.csproj", "{D4B0BE11-38E9-470B-9F0F-7A603EAA5971}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Projektmappenelemente", "Projektmappenelemente", "{DA1F9F32-7E2A-47A6-877F-82139B738627}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsole", "TestConsole\TestConsole.csproj", "{C6F538F2-6F49-49A5-B98C-752824BD91E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestApp", "TestApp", "{48E93A7B-7583-40BB-A2F1-32A711F519C6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{9E170B75-F442-4AD2-9495-1DBF5092647C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsole.Modules.Logging", "TestApp\Modules\TestConsole.Modules.Logging\TestConsole.Modules.Logging.csproj", "{F4BEEF81-BB52-4E36-80F5-CB31CAA66B19}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D4B0BE11-38E9-470B-9F0F-7A603EAA5971}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4B0BE11-38E9-470B-9F0F-7A603EAA5971}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4B0BE11-38E9-470B-9F0F-7A603EAA5971}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4B0BE11-38E9-470B-9F0F-7A603EAA5971}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6F538F2-6F49-49A5-B98C-752824BD91E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6F538F2-6F49-49A5-B98C-752824BD91E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6F538F2-6F49-49A5-B98C-752824BD91E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6F538F2-6F49-49A5-B98C-752824BD91E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4BEEF81-BB52-4E36-80F5-CB31CAA66B19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4BEEF81-BB52-4E36-80F5-CB31CAA66B19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4BEEF81-BB52-4E36-80F5-CB31CAA66B19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4BEEF81-BB52-4E36-80F5-CB31CAA66B19}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C6F538F2-6F49-49A5-B98C-752824BD91E8} = {48E93A7B-7583-40BB-A2F1-32A711F519C6}
+		{9E170B75-F442-4AD2-9495-1DBF5092647C} = {48E93A7B-7583-40BB-A2F1-32A711F519C6}
+		{F4BEEF81-BB52-4E36-80F5-CB31CAA66B19} = {9E170B75-F442-4AD2-9495-1DBF5092647C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F4DB5578-7615-476B-A10C-00253FB6BADF}
+	EndGlobalSection
+EndGlobal
