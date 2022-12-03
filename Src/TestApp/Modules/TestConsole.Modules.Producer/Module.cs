@@ -1,4 +1,5 @@
-﻿using AuroraModularis.Logging.Models;
+﻿using AuroraModularis;
+using AuroraModularis.Logging.Models;
 
 namespace TestConsole.Modules.Producer;
 
@@ -12,6 +13,8 @@ public class Module : AuroraModularis.Module
     }
 
     public override string Name => "Producer";
+
+    public override ShortGuid ID => Guid.Parse("BA877627-C3ED-4FF9-A49F-1F6ACABBD4A9");
 
     public override Task OnStart() => Task.Run(GenerateMessages);
 

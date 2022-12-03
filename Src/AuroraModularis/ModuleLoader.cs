@@ -8,10 +8,10 @@ internal class ModuleLoader
 {
     public ConcurrentBag<Module> Modules { get; set; } = new();
 
-    public void Load(string modulesPath, MessageBroker messageBroker)
+    public void Load(ModularConfiguration config, MessageBroker messageBroker)
     {
         var moduleTypes = new List<Type>();
-        foreach (var modPath in Directory.GetFiles(modulesPath, "*.dll"))
+        foreach (var modPath in Directory.GetFiles(config.ModulesPath, "*.dll"))
         {
             var moduleType = Assembly.LoadFrom(modPath).GetTypes().FirstOrDefault(type => !type.IsAbstract && type.IsAssignableTo(typeof(Module)));
             if (moduleType != null)
@@ -24,13 +24,29 @@ internal class ModuleLoader
         foreach (var moduleType in orderedModulesTypes)
         {
             var moduleInstance = (Module)TinyIoCContainer.Current.Resolve(moduleType);
-            moduleInstance.ID = Guid.NewGuid();
             moduleInstance.Inbox = new(messageBroker);
             moduleInstance.Outbox = new(messageBroker);
+
+            moduleInstance.OnInit();
+            InitSettings(config, moduleInstance);
 
             Modules.Add(moduleInstance);
 
             moduleInstance.RegisterServices(TinyIoCContainer.Current);
+        }
+    }
+
+    private static void InitSettings(ModularConfiguration config, Module moduleInstance)
+    {
+        moduleInstance.SettingsHandler = new(moduleInstance, config.SettingsBasePath);
+
+        if (moduleInstance.Settings == null)
+        {
+            moduleInstance.Settings = new();
+        }
+        else
+        {
+            moduleInstance.Settings = moduleInstance.SettingsHandler.Load(moduleInstance.Settings.GetType());
         }
     }
 
