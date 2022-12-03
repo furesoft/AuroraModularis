@@ -20,7 +20,7 @@ internal class ModuleLoader
             }
         }
 
-        var orderedModulesTypes = moduleTypes.OrderByDescending(HasPriorityAttribute);
+        var orderedModulesTypes = moduleTypes.OrderByDescending(GetModulePriority);
         foreach (var moduleType in orderedModulesTypes)
         {
             var moduleInstance = (Module)TinyIoCContainer.Current.Resolve(moduleType);
@@ -54,10 +54,10 @@ internal class ModuleLoader
         }
     }
 
-    private bool HasPriorityAttribute(Type type)
+    private ModulePriority GetModulePriority(Type type)
     {
         var attribute = type.GetCustomAttribute<PriorityAttribute>();
 
-        return attribute != null;
+        return attribute != null ? attribute.Priority : ModulePriority.Normal;
     }
 }
