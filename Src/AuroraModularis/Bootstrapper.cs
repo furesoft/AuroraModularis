@@ -15,9 +15,8 @@ internal class Bootstrapper
 
         TinyIoCContainer.Current.AutoRegister();
 
-        moduleLoader.Load(config, messageBroker);
-
         TinyIoCContainer.Current.Register(moduleLoader);
+        moduleLoader.Load(config, messageBroker);
 
         var factory = new StdSchedulerFactory();
         var scheduler = await factory.GetScheduler();

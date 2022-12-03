@@ -4,7 +4,7 @@ using System.Collections.Concurrent;
 
 namespace AuroraModularis.Messaging;
 
-internal class MessageBroker
+public class MessageBroker
 {
     private ConcurrentBag<Inbox> inboxes = new();
     private MailboxProcessor<Message> mailboxProcessor;

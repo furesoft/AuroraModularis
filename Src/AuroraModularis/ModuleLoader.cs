@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace AuroraModularis;
 
-internal class ModuleLoader
+public class ModuleLoader
 {
     public ConcurrentBag<Module> Modules { get; set; } = new();
 
