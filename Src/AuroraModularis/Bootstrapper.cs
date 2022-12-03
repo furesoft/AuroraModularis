@@ -6,7 +6,7 @@ namespace AuroraModularis;
 
 internal class Bootstrapper
 {
-    public static async Task RunAsync(ModularConfiguration config)
+    public static async Task RunAsync(ModuleConfigration config)
     {
         ModuleLoader moduleLoader = new();
 

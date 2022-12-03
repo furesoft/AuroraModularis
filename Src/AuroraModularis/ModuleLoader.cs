@@ -8,7 +8,7 @@ internal class ModuleLoader
 {
     public ConcurrentBag<Module> Modules { get; set; } = new();
 
-    public void Load(ModularConfiguration config, MessageBroker messageBroker)
+    public void Load(ModuleConfigration config, MessageBroker messageBroker)
     {
         var moduleTypes = new List<Type>();
         foreach (var modPath in Directory.GetFiles(config.ModulesPath, "*.dll"))
@@ -40,7 +40,7 @@ internal class ModuleLoader
         }
     }
 
-    private static void InitSettings(ModularConfiguration config, Module moduleInstance)
+    private static void InitSettings(ModuleConfigration config, Module moduleInstance)
     {
         moduleInstance.SettingsHandler = new(moduleInstance, config);
 

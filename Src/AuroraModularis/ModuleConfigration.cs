@@ -1,8 +1,8 @@
 ﻿namespace AuroraModularis;
 
-public class ModularConfiguration
+public class ModuleConfigration
 {
-    internal ModularConfiguration()
+    internal ModuleConfigration()
     {
     }
 

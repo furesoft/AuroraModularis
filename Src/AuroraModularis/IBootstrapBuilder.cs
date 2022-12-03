@@ -2,7 +2,7 @@
 
 public interface IBootstrapBuilder
 {
-    public ModularConfiguration Configuration { get; }
+    public ModuleConfigration Configuration { get; }
 
     Task BuildAndStartAsync();
 }

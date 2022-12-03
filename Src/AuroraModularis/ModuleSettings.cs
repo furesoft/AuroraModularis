@@ -3,9 +3,9 @@
 public class ModuleSettings
 {
     private readonly string path;
-    private readonly ModularConfiguration config;
+    private readonly ModuleConfigration config;
 
-    internal ModuleSettings(Module module, ModularConfiguration config)
+    internal ModuleSettings(Module module, ModuleConfigration config)
     {
         path = Path.Combine(config.ModulesPath, module.Name + ".json");
         this.config = config;

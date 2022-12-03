@@ -6,7 +6,7 @@ public class BootstrapperBuilder : IBootstrapBuilder
     {
     }
 
-    public ModularConfiguration Configuration { get; } = new();
+    public ModuleConfigration Configuration { get; } = new();
 
     public static IBootstrapBuilder StartConfigure() => new BootstrapperBuilder();
 
@@ -17,6 +17,6 @@ public class BootstrapperBuilder : IBootstrapBuilder
             Configuration.SettingsProvider = new DefaultSettingsProvider();
         }
 
-        return Bootstrapper.RunAsync(Configuration);
+        return Task.Run(() => Bootstrapper.RunAsync(Configuration));
     }
 }
