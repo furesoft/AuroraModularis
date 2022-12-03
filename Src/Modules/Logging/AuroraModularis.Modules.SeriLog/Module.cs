@@ -6,7 +6,6 @@ namespace AuroraModularis.Modules.Logging.SeriLog;
 public class Module : AuroraModularis.Module
 {
     public override string Name => "SeriLog";
-    public override ShortGuid ID => Guid.Parse("0F1C769E-31B1-4BE4-A6AE-0BB2D7E4386B");
 
     public override Task OnStart()
     {

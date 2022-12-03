@@ -5,8 +5,6 @@ namespace AuroraModularis;
 public abstract class Module
 {
     internal ModuleSettings SettingsHandler;
-
-    public abstract ShortGuid ID { get; }
     public abstract string Name { get; }
 
     public Inbox Inbox { get; internal set; }

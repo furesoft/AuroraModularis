@@ -41,7 +41,7 @@ internal class Bootstrapper
             {
                 foreach (var expr in scheduling.Jobs)
                 {
-                    var jobname = module.ID + expr.Item2.GetType().FullName;
+                    var jobname = Guid.NewGuid() + module.Name + expr.Item2.GetType().FullName;
                     IJobDetail job = JobBuilder.Create(expr.Item2.GetType())
                     .WithIdentity(jobname, "group1")
                     .Build();

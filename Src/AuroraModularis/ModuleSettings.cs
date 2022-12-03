@@ -7,7 +7,7 @@ public class ModuleSettings
 
     internal ModuleSettings(Module module, ModularConfiguration config)
     {
-        path = Path.Combine(config.ModulesPath, module.ID + ".json");
+        path = Path.Combine(config.ModulesPath, module.Name + ".json");
         this.config = config;
     }
 

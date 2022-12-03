@@ -5,9 +5,7 @@ namespace TestApp.Modules.TestSchedulingModule;
 
 public class Module : AuroraModularis.Module, IScheduledModule
 {
-    public override ShortGuid ID => ShortGuid.NewGuid();
-
-    public override string Name => "Scheudling";
+    public override string Name => "SchedulingTest";
 
     public List<(string, IJob)> Jobs => new() {
         ("0/29 0/1 * 1/1 * ? *", new HelloJob()),
