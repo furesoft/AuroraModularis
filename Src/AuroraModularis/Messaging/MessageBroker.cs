@@ -1,4 +1,5 @@
 ﻿using Actress;
+using AuroraModularis.Messaging.Messages;
 using System.Collections.Concurrent;
 
 namespace AuroraModularis.Messaging;
@@ -6,11 +7,11 @@ namespace AuroraModularis.Messaging;
 internal class MessageBroker
 {
     private ConcurrentBag<Inbox> inboxes = new();
-    private MailboxProcessor<object> mailboxProcessor;
+    private MailboxProcessor<Message> mailboxProcessor;
 
     public void Start()
     {
-        mailboxProcessor = MailboxProcessor.Start<object>(async _ =>
+        mailboxProcessor = MailboxProcessor.Start<Message>(async _ =>
         {
             while (true)
             {
@@ -31,7 +32,7 @@ internal class MessageBroker
 
     internal void Post(object message)
     {
-        mailboxProcessor.Post(message);
+        mailboxProcessor.Post(new Message(message));
     }
 
     internal Task<object> PostAndGet(object message)

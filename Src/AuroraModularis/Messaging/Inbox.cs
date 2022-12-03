@@ -1,4 +1,5 @@
-﻿using System.Collections.Concurrent;
+﻿using AuroraModularis.Messaging.Messages;
+using System.Collections.Concurrent;
 
 namespace AuroraModularis.Messaging;
 
@@ -38,20 +39,21 @@ public class Inbox
         Subscribe<U>(new T().Subscribe);
     }
 
-    internal void InvokeIfPresent(object message)
-    {
-        InvokeIfPresent(message.GetType().FullName, message);
-    }
-
-    internal void InvokeIfPresent(string messageType, object message)
+    internal void InvokeIfPresent(Message message)
     {
         lock (lockObject)
         {
-            if (handlers.TryGetValue(messageType, out var value))
+            if (message is ReturnMessage rmsg)
+            {
+                //ToDo: invoke return handlers
+                return;
+            }
+
+            if (handlers.TryGetValue(message.Value.GetType().FullName, out var value))
             {
                 foreach (var handler in value)
                 {
-                    handler(message);
+                    handler(message.Value);
                 }
             }
         }
