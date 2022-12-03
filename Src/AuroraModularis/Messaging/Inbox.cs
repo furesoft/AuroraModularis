@@ -52,7 +52,7 @@ public class Inbox
         Subscribe<U, V>(new T().Subscribe);
     }
 
-    internal void InvokeIfPresent(Message message)
+    internal bool InvokeIfPresent(Message message)
     {
         lock (lockObject)
         {
@@ -63,8 +63,8 @@ public class Inbox
                     var returnValue = retHandler(message.Value);
 
                     rmsg.Channel.Reply(returnValue);
+                    return true;
                 }
-                return;
             }
 
             if (handlers.TryGetValue(message.Value.GetType().FullName, out var value))
@@ -73,7 +73,10 @@ public class Inbox
                 {
                     handler(message.Value);
                 }
+                return true;
             }
+
+            return false;
         }
     }
 }

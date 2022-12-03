@@ -11,13 +11,13 @@ public class Outbox
         this.messageBroker = messageBroker;
     }
 
-    public void Post<T>(T message)
+    public void Post<T>(T message, bool repost = false)
     {
-        messageBroker.Post(message);
+        messageBroker.Post(message, repost);
     }
 
-    public U PostAndGet<T, U>(T message)
+    public U PostAndGet<T, U>(T message, bool repost = false)
     {
-        return messageBroker.PostAndGet<U>(message);
+        return messageBroker.PostAndGet<U>(message, repost);
     }
 }

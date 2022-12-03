@@ -16,9 +16,16 @@ internal class MessageBroker
             while (true)
             {
                 var message = await _.Receive();
+
+                bool hasBeenInvoked = false;
                 foreach (var inbox in inboxes)
                 {
-                    inbox.InvokeIfPresent(message);
+                    hasBeenInvoked = inbox.InvokeIfPresent(message);
+                }
+
+                if (!hasBeenInvoked && message.Repost)
+                {
+                    mailboxProcessor.Post(message);
                 }
             }
         });
@@ -30,19 +37,19 @@ internal class MessageBroker
         inboxes.Add(inbox);
     }
 
-    internal void Post(object message)
+    internal void Post(object message, bool repost)
     {
-        mailboxProcessor.Post(new Message(message));
+        mailboxProcessor.Post(new Message(message) { Repost = repost });
     }
 
-    internal T PostAndGet<T>(object message)
+    internal T PostAndGet<T>(object message, bool repost)
     {
         return (T)mailboxProcessor.PostAndReply<object>(
-            channel => new ReturnMessage(message, channel));
+            channel => new ReturnMessage(message, channel) { Repost = repost });
     }
 
     private void OnError(Exception error)
     {
-        Post(error);
+        Post(error, false);
     }
 }

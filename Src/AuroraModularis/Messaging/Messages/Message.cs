@@ -8,4 +8,5 @@ internal class Message
     }
 
     public object Value { get; set; }
+    public bool Repost { get; set; }
 }
