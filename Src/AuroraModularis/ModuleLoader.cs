@@ -8,10 +8,20 @@ internal class ModuleLoader
 {
     public ConcurrentBag<Module> Modules { get; set; } = new();
 
-    public Module Load(string path, MessageBroker messageBroker)
+    public void Load(string modulesPath, MessageBroker messageBroker)
     {
-        var moduleType = Assembly.LoadFrom(path).GetTypes().FirstOrDefault(type => !type.IsAbstract && type.IsAssignableTo(typeof(Module)));
-        if (moduleType != null)
+        var moduleTypes = new List<Type>();
+        foreach (var modPath in Directory.GetFiles(modulesPath, "*.dll"))
+        {
+            var moduleType = Assembly.LoadFrom(modPath).GetTypes().FirstOrDefault(type => !type.IsAbstract && type.IsAssignableTo(typeof(Module)));
+            if (moduleType != null)
+            {
+                moduleTypes.Add(moduleType);
+            }
+        }
+
+        var orderedModulesTypes = moduleTypes.OrderByDescending(HasPriorityAttribute);
+        foreach (var moduleType in orderedModulesTypes)
         {
             var moduleInstance = (Module)TinyIoCContainer.Current.Resolve(moduleType);
             moduleInstance.ID = Guid.NewGuid();
@@ -20,17 +30,14 @@ internal class ModuleLoader
 
             Modules.Add(moduleInstance);
 
-            return moduleInstance;
+            moduleInstance.RegisterServices(TinyIoCContainer.Current);
         }
-
-        return null;
     }
 
-    public void Init(TinyIoCContainer container)
+    private bool HasPriorityAttribute(Type type)
     {
-        foreach (var module in Modules)
-        {
-            module.RegisterServices(container);
-        }
+        var attribute = type.GetCustomAttribute<PriorityAttribute>();
+
+        return attribute != null;
     }
 }

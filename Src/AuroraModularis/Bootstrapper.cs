@@ -11,13 +11,9 @@ public class Bootstrapper
         var messageBroker = new MessageBroker();
         messageBroker.Start();
 
-        foreach (var modPath in Directory.GetFiles(modulesPath, "*.dll"))
-        {
-            moduleLoader.Load(modPath, messageBroker);
-        }
-
         TinyIoCContainer.Current.AutoRegister();
-        moduleLoader.Init(TinyIoCContainer.Current);
+
+        moduleLoader.Load(".", messageBroker);
 
         Task.WaitAll(moduleLoader.Modules.Select(_ => _.OnStart()).ToArray());
     }
