@@ -22,4 +22,12 @@ public static class BootstrapBuilderExtensions
 
         return builder;
     }
+
+    public static IBootstrapBuilder WithSettingsProvider<T>(this IBootstrapBuilder builder)
+        where T : IModuleSettingsProvider, new()
+    {
+        builder.Configuration.SettingsProvider = new T();
+
+        return builder;
+    }
 }

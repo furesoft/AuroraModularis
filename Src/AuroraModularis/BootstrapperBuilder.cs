@@ -12,6 +12,11 @@ public class BootstrapperBuilder : IBootstrapBuilder
 
     public Task BuildAndStartAsync()
     {
+        if (Configuration.SettingsProvider == null)
+        {
+            Configuration.SettingsProvider = new DefaultSettingsProvider();
+        }
+
         return Bootstrapper.RunAsync(Configuration);
     }
 }

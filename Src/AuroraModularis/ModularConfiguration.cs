@@ -10,5 +10,5 @@ public class ModularConfiguration
     public string ModulesPath { get; set; }
     public string SettingsBasePath { get; set; }
 
-    public Type SettingsProviderType { get; set; }
+    public IModuleSettingsProvider SettingsProvider { get; set; }
 }

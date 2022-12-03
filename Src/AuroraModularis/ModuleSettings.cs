@@ -1,38 +1,33 @@
-﻿using System.Text.Json;
+﻿namespace AuroraModularis;
 
-namespace AuroraModularis
+public class ModuleSettings
 {
-    public class ModuleSettings
+    private readonly string path;
+    private readonly ModularConfiguration config;
+
+    internal ModuleSettings(Module module, ModularConfiguration config)
     {
-        private readonly string path;
-        private readonly string basePath;
+        path = Path.Combine(config.ModulesPath, module.ID + ".json");
+        this.config = config;
+    }
 
-        internal ModuleSettings(Module module, ModularConfiguration config)
+    public void Save(object data)
+    {
+        if (!Directory.Exists(config.SettingsBasePath))
         {
-            path = Path.Combine(config.ModulesPath, module.ID + ".json");
-            basePath = config.SettingsBasePath;
+            Directory.CreateDirectory(config.SettingsBasePath);
         }
 
-        public void Save(object data)
+        config.SettingsProvider.Save(data, path);
+    }
+
+    public object Load(Type type)
+    {
+        if (!File.Exists(path))
         {
-            if (!Directory.Exists(basePath))
-            {
-                Directory.CreateDirectory(basePath);
-            }
-
-            var json = JsonSerializer.Serialize(data, new JsonSerializerOptions { WriteIndented = true });
-
-            File.WriteAllText(path, json);
+            Save(Activator.CreateInstance(type));
         }
 
-        public object Load(Type type)
-        {
-            if (!File.Exists(path))
-            {
-                Save(Activator.CreateInstance(type));
-            }
-
-            return JsonSerializer.Deserialize(File.ReadAllText(path), type);
-        }
+        return config.SettingsProvider.Load(path, type);
     }
 }
