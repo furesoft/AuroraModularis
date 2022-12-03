@@ -1,16 +1,17 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net7.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
-    <BaseOutputPath>.\..\Dist</BaseOutputPath>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\AuroraModularis\AuroraModularis.csproj" />
     <ProjectReference Include="..\..\Modules\Logging\AuroraModularis.Modules.SeriLog\AuroraModularis.Modules.Logging.SeriLog.csproj" />
+    <ProjectReference Include="..\..\Modules\TestGui.Modules.TestUIModule\TestGui.Modules.TestUIModule.csproj" />
     <ProjectReference Include="..\Modules\TestApp.Modules.TestSchedulingModule\TestApp.Modules.TestSchedulingModule.csproj" />
     <ProjectReference Include="..\Modules\TestConsole.Modules.Producer\TestConsole.Modules.Producer.csproj" />
   </ItemGroup>

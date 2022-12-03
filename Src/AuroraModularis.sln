@@ -22,9 +22,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{6DD0
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuroraModularis.Modules.Logging.SeriLog", "Modules\Logging\AuroraModularis.Modules.SeriLog\AuroraModularis.Modules.Logging.SeriLog.csproj", "{4BC3AB2D-517C-49D4-8F1C-22722979E56B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuroraModularis.Logging.Models", "Modules\Logging\AuroraModularis.Logging.Models\AuroraModularis.Logging.Models.csproj", "{124F0FCB-76C4-4D15-8BA3-972D740B4011}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuroraModularis.Logging.Models", "Modules\Logging\AuroraModularis.Logging.Models\AuroraModularis.Logging.Models.csproj", "{124F0FCB-76C4-4D15-8BA3-972D740B4011}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp.Modules.TestSchedulingModule", "TestApp\Modules\TestApp.Modules.TestSchedulingModule\TestApp.Modules.TestSchedulingModule.csproj", "{4CC6D716-6577-40AF-B3A0-DD8CE172626D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestApp.Modules.TestSchedulingModule", "TestApp\Modules\TestApp.Modules.TestSchedulingModule\TestApp.Modules.TestSchedulingModule.csproj", "{4CC6D716-6577-40AF-B3A0-DD8CE172626D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestGui", "TestApp\TestGui\TestGui.csproj", "{8FD75E5D-117E-4D67-A254-317EB2F91224}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestGui.Modules.TestUIModule", "Modules\TestGui.Modules.TestUIModule\TestGui.Modules.TestUIModule.csproj", "{BDC3923A-F5A2-413D-9D92-A18754999943}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -56,6 +60,14 @@ Global
 		{4CC6D716-6577-40AF-B3A0-DD8CE172626D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CC6D716-6577-40AF-B3A0-DD8CE172626D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CC6D716-6577-40AF-B3A0-DD8CE172626D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FD75E5D-117E-4D67-A254-317EB2F91224}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FD75E5D-117E-4D67-A254-317EB2F91224}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FD75E5D-117E-4D67-A254-317EB2F91224}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FD75E5D-117E-4D67-A254-317EB2F91224}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDC3923A-F5A2-413D-9D92-A18754999943}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDC3923A-F5A2-413D-9D92-A18754999943}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDC3923A-F5A2-413D-9D92-A18754999943}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDC3923A-F5A2-413D-9D92-A18754999943}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,6 +79,8 @@ Global
 		{4BC3AB2D-517C-49D4-8F1C-22722979E56B} = {6DD0A79D-647E-4E91-85D2-3967D398F134}
 		{124F0FCB-76C4-4D15-8BA3-972D740B4011} = {6DD0A79D-647E-4E91-85D2-3967D398F134}
 		{4CC6D716-6577-40AF-B3A0-DD8CE172626D} = {9E170B75-F442-4AD2-9495-1DBF5092647C}
+		{8FD75E5D-117E-4D67-A254-317EB2F91224} = {48E93A7B-7583-40BB-A2F1-32A711F519C6}
+		{BDC3923A-F5A2-413D-9D92-A18754999943} = {9E170B75-F442-4AD2-9495-1DBF5092647C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F4DB5578-7615-476B-A10C-00253FB6BADF}
