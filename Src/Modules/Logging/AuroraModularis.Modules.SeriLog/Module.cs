@@ -15,6 +15,7 @@ public class Module : AuroraModularis.Module
 
     public override void OnInit()
     {
+        UseSettings = true;
         Settings = new SettingsModel();
     }
 

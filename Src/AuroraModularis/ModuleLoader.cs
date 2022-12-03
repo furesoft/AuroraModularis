@@ -28,7 +28,11 @@ internal class ModuleLoader
             moduleInstance.Outbox = new(messageBroker);
 
             moduleInstance.OnInit();
-            InitSettings(config, moduleInstance);
+
+            if (moduleInstance.UseSettings)
+            {
+                InitSettings(config, moduleInstance);
+            }
 
             Modules.Add(moduleInstance);
 

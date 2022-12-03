@@ -13,6 +13,7 @@ public abstract class Module
     public Outbox Outbox { get; internal set; }
 
     public object Settings { get; set; }
+    public bool UseSettings { get; set; }
 
     public virtual void RegisterServices(TinyIoCContainer container)
     {
@@ -26,6 +27,9 @@ public abstract class Module
 
     public virtual void OnExit()
     {
-        SettingsHandler.Save(Settings);
+        if (UseSettings)
+        {
+            SettingsHandler.Save(Settings);
+        }
     }
 }

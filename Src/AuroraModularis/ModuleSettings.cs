@@ -30,7 +30,7 @@ namespace AuroraModularis
         {
             if (!File.Exists(path))
             {
-                Save(new());
+                Save(Activator.CreateInstance(type));
             }
 
             return JsonSerializer.Deserialize(File.ReadAllText(path), type);
