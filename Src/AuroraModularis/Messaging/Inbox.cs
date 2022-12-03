@@ -5,16 +5,13 @@ namespace AuroraModularis.Messaging;
 
 public class Inbox
 {
-    private readonly MessageBroker messageBroker;
-
     private ConcurrentDictionary<string, ConcurrentBag<Action<object>>> handlers = new();
+    private ConcurrentDictionary<string, Func<object, object>> returnHandlers = new();
 
     private object lockObject = new();
 
     internal Inbox(MessageBroker messageBroker)
     {
-        this.messageBroker = messageBroker;
-
         messageBroker.AddInbox(this);
     }
 
@@ -33,10 +30,26 @@ public class Inbox
         }
     }
 
+    public void Subscribe<T, U>(Func<T, U> callback)
+    {
+        string? fullName = typeof(T).FullName;
+
+        lock (lockObject)
+        {
+            returnHandlers[fullName] = _ => callback((T)_);
+        }
+    }
+
     public void AddHandler<T, U>()
         where T : IMessageHandler<U>, new()
     {
         Subscribe<U>(new T().Subscribe);
+    }
+
+    public void AddHandler<T, U, V>()
+        where T : IReturnMessageHandler<U, V>, new()
+    {
+        Subscribe<U, V>(new T().Subscribe);
     }
 
     internal void InvokeIfPresent(Message message)
@@ -45,7 +58,12 @@ public class Inbox
         {
             if (message is ReturnMessage rmsg)
             {
-                //ToDo: invoke return handlers
+                if (returnHandlers.TryGetValue(message.Value.GetType().FullName, out var retHandler))
+                {
+                    var returnValue = retHandler(message.Value);
+
+                    rmsg.Channel.Reply(returnValue);
+                }
                 return;
             }
 

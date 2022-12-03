@@ -35,9 +35,10 @@ internal class MessageBroker
         mailboxProcessor.Post(new Message(message));
     }
 
-    internal Task<object> PostAndGet(object message)
+    internal T PostAndGet<T>(object message)
     {
-        throw new NotImplementedException();
+        return (T)mailboxProcessor.PostAndReply<object>(
+            channel => new ReturnMessage(message, channel));
     }
 
     private void OnError(Exception error)

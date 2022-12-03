@@ -16,10 +16,8 @@ public class Outbox
         messageBroker.Post(message);
     }
 
-    public async Task<U> PostAndGet<T, U>(T message)
+    public U PostAndGet<T, U>(T message)
     {
-        var value = await messageBroker.PostAndGet(message);
-
-        return (U)value;
+        return messageBroker.PostAndGet<U>(message);
     }
 }

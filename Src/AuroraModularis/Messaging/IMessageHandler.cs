@@ -1,6 +1,6 @@
 ﻿namespace AuroraModularis.Messaging;
 
-public interface IMessageHandler<T>
+public interface IMessageHandler<in T>
 {
-    void Subscribe<T>(T message);
+    void Subscribe(T message);
 }
