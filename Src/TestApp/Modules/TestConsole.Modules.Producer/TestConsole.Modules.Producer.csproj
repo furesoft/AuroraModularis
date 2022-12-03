@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\AuroraModularis\AuroraModularis.csproj" />
+    <ProjectReference Include="..\..\..\Modules\Logging\AuroraModularis.Logging.Models\AuroraModularis.Logging.Models.csproj" />
   </ItemGroup>
 
 </Project>
