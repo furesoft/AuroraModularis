@@ -7,11 +7,10 @@ namespace AuroraModularis
         private readonly string path;
         private readonly string basePath;
 
-        //ToDo: Maybe add SettingsProvider to make settings source changable (eg. json, xml, csv, toml)
-        internal ModuleSettings(Module module, string basePath)
+        internal ModuleSettings(Module module, ModularConfiguration config)
         {
-            path = Path.Combine(basePath, module.ID + ".json");
-            this.basePath = basePath;
+            path = Path.Combine(config.ModulesPath, module.ID + ".json");
+            basePath = config.SettingsBasePath;
         }
 
         public void Save(object data)

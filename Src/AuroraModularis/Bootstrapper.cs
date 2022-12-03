@@ -2,7 +2,7 @@
 
 namespace AuroraModularis;
 
-public class Bootstrapper
+internal class Bootstrapper
 {
     public static async Task RunAsync(ModularConfiguration config)
     {

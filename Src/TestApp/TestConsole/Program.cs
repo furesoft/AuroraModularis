@@ -6,6 +6,10 @@ internal class Program
 {
     private static Task Main(string[] args)
     {
-        return Bootstrapper.RunAsync(new(Environment.CurrentDirectory, "TestConsole", "."));
+        return BootstrapperBuilder.Build()
+            .WithAppName("TestConsole")
+            .WithModulesBasePath(Environment.CurrentDirectory)
+            .WithSettingsBasePath(".")
+            .BuildAndStartAsync();
     }
 }

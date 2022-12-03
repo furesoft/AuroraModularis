@@ -42,7 +42,7 @@ internal class ModuleLoader
 
     private static void InitSettings(ModularConfiguration config, Module moduleInstance)
     {
-        moduleInstance.SettingsHandler = new(moduleInstance, config.SettingsBasePath);
+        moduleInstance.SettingsHandler = new(moduleInstance, config);
 
         if (moduleInstance.Settings == null)
         {

@@ -2,14 +2,13 @@
 
 public class ModularConfiguration
 {
-    public ModularConfiguration(string modulesPath, string applicationName, string settingsBasePath)
+    internal ModularConfiguration()
     {
-        ModulesPath = modulesPath;
-        ApplicationName = applicationName;
-        SettingsBasePath = settingsBasePath;
     }
 
     public string ApplicationName { get; set; }
     public string ModulesPath { get; set; }
     public string SettingsBasePath { get; set; }
+
+    public Type SettingsProviderType { get; set; }
 }
