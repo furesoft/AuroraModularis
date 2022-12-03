@@ -6,10 +6,11 @@ public class Module : AuroraModularis.Module
 
     public override Task OnStart()
     {
-        Button button = new Button() { Text = "Hello World" };
+        Button button = new Button() { Text = "btn " };
+        button.Height = 25;
         button.Click += (s, e) =>
         {
-            MessageBox.Show("yay");
+            MessageBox.Show("yay: ");
         };
 
         Outbox.Post<Button>(button, true);

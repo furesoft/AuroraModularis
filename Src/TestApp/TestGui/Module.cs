@@ -1,4 +1,5 @@
 ﻿using AuroraModularis;
+using System.Text.Json;
 
 namespace TestGui;
 
@@ -17,17 +18,22 @@ public class Module : AuroraModularis.Module
             Environment.Exit(0);
         };
 
-        Inbox.Subscribe<Button>(_ =>
-        {
-            frm.Controls.Add(_);
-        });
-
         var flowLayout = new FlowLayoutPanel();
         flowLayout.Dock = DockStyle.Fill;
 
+        Inbox.Subscribe<Button>(_ =>
+        {
+            flowLayout.Controls.Add(_);
+        });
+
         foreach (var module in moduleLoader.Modules)
         {
-            flowLayout.Controls.Add(new Label { Text = module.Name });
+            Button btn = new Button { Text = module.Name };
+            btn.Click += (s, e) =>
+            {
+                MessageBox.Show(JsonSerializer.Serialize(module.Settings));
+            };
+            flowLayout.Controls.Add(btn);
         }
         frm.Controls.Add(flowLayout);
 
