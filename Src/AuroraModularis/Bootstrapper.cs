@@ -4,7 +4,7 @@ namespace AuroraModularis;
 
 public class Bootstrapper
 {
-    public static async Task RunAsync(string modulesPath)
+    public static async Task RunAsync(ModularConfiguration config)
     {
         ModuleLoader moduleLoader = new();
 
@@ -13,7 +13,7 @@ public class Bootstrapper
 
         TinyIoCContainer.Current.AutoRegister();
 
-        moduleLoader.Load(".", messageBroker);
+        moduleLoader.Load(config.ModulesPath, messageBroker);
 
         Task.WaitAll(moduleLoader.Modules.Select(_ => _.OnStart()).ToArray());
     }
