@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -6,6 +6,8 @@
     <Nullable>enable</Nullable>
     <BaseOutputPath>.\..\..\..\Dist</BaseOutputPath>
 	<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+	<PackageVersion>1.0.0</PackageVersion>
+	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
