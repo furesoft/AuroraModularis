@@ -8,7 +8,7 @@ public class BootstrapperBuilder : IBootstrapBuilder
 
     public ModularConfiguration Configuration { get; } = new();
 
-    public static IBootstrapBuilder Build() => new BootstrapperBuilder();
+    public static IBootstrapBuilder StartConfigure() => new BootstrapperBuilder();
 
     public Task BuildAndStartAsync()
     {

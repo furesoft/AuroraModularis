@@ -6,7 +6,7 @@ internal class Program
 {
     private static Task Main(string[] args)
     {
-        return BootstrapperBuilder.Build()
+        return BootstrapperBuilder.StartConfigure()
             .WithAppName("TestConsole")
             .WithModulesBasePath(Environment.CurrentDirectory)
             .WithSettingsBasePath(".")
