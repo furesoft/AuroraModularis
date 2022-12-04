@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <BaseOutputPath>.\..\..\..\Dist</BaseOutputPath>
 	<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-	<PackageVersion>1.0.4</PackageVersion>
+	<PackageVersion>1.0.5</PackageVersion>
 	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
