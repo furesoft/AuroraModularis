@@ -8,8 +8,6 @@ public class Module : AuroraModularis.Module
 {
     private ModuleLoader moduleLoader;
 
-    public override string Name => "Host";
-
     public override Task OnStart()
     {
         var frm = new Form1();
@@ -28,7 +26,7 @@ public class Module : AuroraModularis.Module
 
         foreach (var module in moduleLoader.Modules)
         {
-            Button btn = new Button { Text = module.Name };
+            Button btn = new Button { Text = module.Name, AutoSize = true };
             btn.Click += (s, e) =>
             {
                 MessageBox.Show(JsonSerializer.Serialize(module.Settings));

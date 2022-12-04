@@ -12,8 +12,6 @@ public class Module : AuroraModularis.Module
         this.logger = logger;
     }
 
-    public override string Name => "Producer";
-
     public override Task OnStart() => Task.Run(GenerateMessages);
 
     private async Task GenerateMessages()

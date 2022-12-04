@@ -5,8 +5,6 @@ namespace AuroraModularis.Modules.Logging.SeriLog;
 [Priority]
 public class Module : AuroraModularis.Module
 {
-    public override string Name => "SeriLog";
-
     public override Task OnStart()
     {
         return Task.CompletedTask;

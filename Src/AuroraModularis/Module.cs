@@ -5,7 +5,9 @@ namespace AuroraModularis;
 public abstract class Module
 {
     internal ModuleSettings SettingsHandler;
-    public abstract string Name { get; }
+
+    public virtual string Name
+    { get { return this.GetType().Namespace; } }
 
     public Inbox Inbox { get; internal set; }
     public Outbox Outbox { get; internal set; }

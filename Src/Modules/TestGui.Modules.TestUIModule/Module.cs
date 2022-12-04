@@ -2,8 +2,6 @@
 
 public class Module : AuroraModularis.Module
 {
-    public override string Name => "UI";
-
     public override Task OnStart()
     {
         Button button = new Button() { Text = "btn " };
