@@ -4,7 +4,7 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-	<PackageVersion>1.0.0</PackageVersion>
+	<PackageVersion>1.0.2</PackageVersion>
 	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
