@@ -19,7 +19,7 @@ public abstract class Module
     {
     }
 
-    public abstract Task OnStart();
+    public abstract Task OnStart(TinyIoCContainer container);
 
     public virtual void OnInit()
     {

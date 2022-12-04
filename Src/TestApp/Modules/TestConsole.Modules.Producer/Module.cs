@@ -12,7 +12,7 @@ public class Module : AuroraModularis.Module
         this.logger = logger;
     }
 
-    public override Task OnStart() => Task.Run(GenerateMessages);
+    public override Task OnStart(TinyIoCContainer container) => Task.Run(GenerateMessages);
 
     private async Task GenerateMessages()
     {

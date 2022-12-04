@@ -1,8 +1,10 @@
-﻿namespace TestGui.Modules.TestUIModule;
+﻿using AuroraModularis;
+
+namespace TestGui.Modules.TestUIModule;
 
 public class Module : AuroraModularis.Module
 {
-    public override Task OnStart()
+    public override Task OnStart(TinyIoCContainer container)
     {
         Button button = new Button() { Text = "btn " };
         button.Height = 25;

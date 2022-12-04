@@ -31,7 +31,7 @@ internal class Bootstrapper
             }
         };
 
-        Task.WaitAll(moduleLoader.Modules.Select(_ => _.OnStart()).ToArray());
+        Task.WaitAll(moduleLoader.Modules.Select(_ => _.OnStart(TinyIoCContainer.Current)).ToArray());
     }
 
     private static async Task ScheduleJobs(ModuleLoader moduleLoader, IScheduler scheduler)

@@ -6,7 +6,7 @@ namespace AuroraModularis.Modules.Logging.SeriLog;
 [Priority]
 public class Module : AuroraModularis.Module
 {
-    public override Task OnStart()
+    public override Task OnStart(TinyIoCContainer container)
     {
         return Task.CompletedTask;
     }

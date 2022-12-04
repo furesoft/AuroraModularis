@@ -10,7 +10,7 @@ public class Module : AuroraModularis.Module, IScheduledModule
         ("0/15 0/1 * 1/1 * ? *", new HelloJob())
     };
 
-    public override Task OnStart()
+    public override Task OnStart(TinyIoCContainer container)
     {
         return Task.CompletedTask;
     }

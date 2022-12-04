@@ -12,7 +12,7 @@
     <RepositoryUrl>https://github.com/furesoft/AuroraModularis</RepositoryUrl>
     <PackageTags>modular;monolith;framework</PackageTags>
     <IncludeSymbols>True</IncludeSymbols>
-	<PackageVersion>1.0.2</PackageVersion>
+	<PackageVersion>1.0.3</PackageVersion>
   </PropertyGroup>
 
   <ItemGroup>

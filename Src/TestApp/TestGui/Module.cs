@@ -8,7 +8,7 @@ public class Module : AuroraModularis.Module
 {
     private ModuleLoader moduleLoader;
 
-    public override Task OnStart()
+    public override Task OnStart(TinyIoCContainer container)
     {
         var frm = new Form1();
         frm.FormClosing += (s, e) =>
