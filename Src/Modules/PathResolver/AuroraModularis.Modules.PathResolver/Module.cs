@@ -2,7 +2,7 @@
 
 namespace AuroraModularis.Modules.PathResolver;
 
-[Priority(ModulePriority.High)]
+[Priority(ModulePriority.Max)]
 public class Module : AuroraModularis.Module
 {
     public override Task OnStart()

@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <BaseOutputPath>.\..\..\..\Dist</BaseOutputPath>
 	<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-	<PackageVersion>1.0.2</PackageVersion>
+	<PackageVersion>1.0.3</PackageVersion>
 	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\AuroraModularis\AuroraModularis.csproj" />
+    <ProjectReference Include="..\..\PathResolver\AuroraModularis.Modules.PathResolver.Models\AuroraModularis.Modules.PathResolver.Models.csproj" />
     <ProjectReference Include="..\AuroraModularis.Logging.Models\AuroraModularis.Logging.Models.csproj" />
   </ItemGroup>
 

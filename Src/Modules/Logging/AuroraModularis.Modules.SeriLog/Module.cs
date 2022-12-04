@@ -1,4 +1,5 @@
-﻿using Serilog;
+﻿using AuroraModularis.Modules.PathResolver.Models;
+using Serilog;
 
 namespace AuroraModularis.Modules.Logging.SeriLog;
 
@@ -20,8 +21,15 @@ public class Module : AuroraModularis.Module
     {
         var logConfig = new LoggerConfiguration()
         .WriteTo.Console();
-        // .WriteTo.File(Path.Combine(_pathManager.ConfigBaseDir, "log.txt"))
+
         var settings = (SettingsModel)Settings;
+
+        if (settings.LogFile != null)
+        {
+            var pathResolver = container.Resolve<IPathResolver>();
+            logConfig.WriteTo.File(Path.Combine(pathResolver.ConvertPath(settings.LogFile), "log.txt"));
+        }
+
         if (settings.WriteToDebug)
         {
             logConfig.WriteTo.Debug();

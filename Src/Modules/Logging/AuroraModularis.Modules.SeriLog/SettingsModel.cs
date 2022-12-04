@@ -1,7 +1,7 @@
-﻿namespace AuroraModularis.Modules.Logging.SeriLog
+﻿namespace AuroraModularis.Modules.Logging.SeriLog;
+
+public class SettingsModel
 {
-    public class SettingsModel
-    {
-        public bool WriteToDebug { get; set; }
-    }
+    public bool WriteToDebug { get; set; }
+    public string? LogFile { get; set; }
 }
