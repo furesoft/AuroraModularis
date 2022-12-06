@@ -5,7 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <BaseOutputPath>.\..\..\..\Dist</BaseOutputPath>
 	<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-	<PackageVersion>1.0.5</PackageVersion>
+	<PackageVersion>1.0.6</PackageVersion>
 	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
