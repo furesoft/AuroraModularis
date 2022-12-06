@@ -1,4 +1,5 @@
 ﻿using AuroraModularis.Core;
+using AuroraModularis.Hooks.Core;
 using AuroraModularis.Messaging;
 using System.Collections.Concurrent;
 using System.Reflection;
@@ -21,10 +22,19 @@ public class ModuleLoader
             }
         }
 
-        var orderedModulesTypes = moduleTypes.OrderByDescending(GetModulePriority);
-        foreach (var moduleType in orderedModulesTypes)
+        var orderedModulesTypes = moduleTypes.OrderByDescending(GetModulePriority).ToArray();
+        for (int i = 0; i < orderedModulesTypes.Length; i++)
         {
+            var moduleType = orderedModulesTypes[i];
             var moduleInstance = (Module)TinyIoCContainer.Current.Resolve(moduleType);
+
+            var hook = config.Hooks.GetHook<IModuleLoadingHook>();
+            if (hook != null && !hook.ShouldLoadModule(moduleInstance))
+            {
+                moduleTypes.Remove(moduleType);
+                continue;
+            }
+
             moduleInstance.Inbox = new(messageBroker);
             moduleInstance.Outbox = new(messageBroker);
 
@@ -38,6 +48,8 @@ public class ModuleLoader
             Modules.Add(moduleInstance);
 
             moduleInstance.RegisterServices(TinyIoCContainer.Current);
+
+            hook?.AfterLoadModule(moduleInstance);
         }
     }
 

@@ -12,5 +12,7 @@ public class ModuleConfigration
     public string ModulesPath { get; set; }
     public string SettingsBasePath { get; set; }
 
+    public ModuleHookProvider Hooks { get; set; } = new();
+
     public IModuleSettingsProvider SettingsProvider { get; set; }
 }

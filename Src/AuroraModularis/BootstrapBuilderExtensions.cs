@@ -32,4 +32,12 @@ public static class BootstrapBuilderExtensions
 
         return builder;
     }
+
+    public static IBootstrapBuilder WithHook<T>(this IBootstrapBuilder builder)
+        where T : IModuleHook, new()
+    {
+        builder.Configuration.Hooks.Register<T>();
+
+        return builder;
+    }
 }

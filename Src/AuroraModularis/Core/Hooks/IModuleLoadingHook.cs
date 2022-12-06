@@ -1,3 +1,5 @@
+using AuroraModularis.Core;
+
 namespace AuroraModularis.Hooks.Core;
 
 public interface IModuleLoadingHook : IModuleHook
