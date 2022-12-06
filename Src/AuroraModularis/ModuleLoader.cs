@@ -8,7 +8,7 @@ namespace AuroraModularis;
 
 public class ModuleLoader
 {
-    public ConcurrentBag<Module> Modules { get; set; } = new();
+    public ConcurrentBag<Module> Modules { get; private set; } = new();
 
     public void Load(ModuleConfigration config, MessageBroker messageBroker)
     {
