@@ -13,12 +13,16 @@ public class ModuleLoader
     public void Load(ModuleConfigration config, MessageBroker messageBroker)
     {
         var moduleTypes = new List<Type>();
+        var hook = config.Hooks.GetHook<IModuleLoadingHook>();
+
         foreach (var modPath in Directory.GetFiles(config.ModulesPath, "*.dll"))
         {
             var moduleType = Assembly.LoadFrom(modPath).GetTypes().FirstOrDefault(type => !type.IsAbstract && type.IsAssignableTo(typeof(Module)));
             if (moduleType != null)
             {
                 moduleTypes.Add(moduleType);
+
+                hook?.BeforeLoadModule(moduleType);
             }
         }
 
@@ -28,7 +32,7 @@ public class ModuleLoader
             var moduleType = orderedModulesTypes[i];
             var moduleInstance = (Module)TinyIoCContainer.Current.Resolve(moduleType);
 
-            var hook = config.Hooks.GetHook<IModuleLoadingHook>();
+            
             if (hook != null && !hook.ShouldLoadModule(moduleInstance))
             {
                 moduleTypes.Remove(moduleType);
