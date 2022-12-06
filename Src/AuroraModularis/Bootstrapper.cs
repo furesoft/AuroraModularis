@@ -1,4 +1,5 @@
-﻿using AuroraModularis.Messaging;
+﻿using AuroraModularis.Core;
+using AuroraModularis.Messaging;
 using Quartz;
 using Quartz.Impl;
 

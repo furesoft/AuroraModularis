@@ -1,4 +1,6 @@
-﻿namespace AuroraModularis;
+﻿using AuroraModularis.Core;
+
+namespace AuroraModularis;
 
 public class BootstrapperBuilder : IBootstrapBuilder
 {

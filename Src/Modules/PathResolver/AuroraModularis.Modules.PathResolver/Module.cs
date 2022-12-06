@@ -1,4 +1,5 @@
-﻿using AuroraModularis.Modules.PathResolver.Models;
+﻿using AuroraModularis.Core;
+using AuroraModularis.Modules.PathResolver.Models;
 
 namespace AuroraModularis.Modules.PathResolver;
 

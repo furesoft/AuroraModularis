@@ -1,4 +1,5 @@
-﻿using Serilog;
+﻿using AuroraModularis.Core;
+using Serilog;
 
 namespace AuroraModularis.Modules.Logging.SeriLog;
 
