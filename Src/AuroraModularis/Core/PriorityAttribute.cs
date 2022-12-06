@@ -1,4 +1,4 @@
-﻿namespace AuroraModularis;
+﻿namespace AuroraModularis.Core;
 
 [AttributeUsage(AttributeTargets.Class)]
 public class PriorityAttribute : Attribute

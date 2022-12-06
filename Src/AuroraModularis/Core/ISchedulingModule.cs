@@ -1,6 +1,6 @@
 ﻿using Quartz;
 
-namespace AuroraModularis;
+namespace AuroraModularis.Core;
 
 public interface IScheduledModule
 {

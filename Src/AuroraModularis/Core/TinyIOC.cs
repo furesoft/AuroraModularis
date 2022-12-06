@@ -12,7 +12,7 @@
 // LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
 // FITNESS FOR A PARTICULAR PURPOSE.
 //===============================================================================
-
+#nullable disable
 #region Preprocessor Directives
 
 // Uncomment this line if you want the container to automatically

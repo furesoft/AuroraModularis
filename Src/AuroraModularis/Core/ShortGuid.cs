@@ -1,4 +1,4 @@
-﻿namespace AuroraModularis;
+﻿namespace AuroraModularis.Core;
 
 /// <summary>
 /// Represents a globally unique identifier (GUID) with a
