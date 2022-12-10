@@ -54,6 +54,8 @@ internal class Bootstrapper
                     .ForJob(jobname, "group1")
                     .Build();
 
+                    scheduling.Scheduler = scheduler;
+
                     await scheduler.ScheduleJob(job, trigger);
                 }
 
