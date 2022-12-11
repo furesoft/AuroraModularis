@@ -5,7 +5,6 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-	<PackageVersion>1.0.5</PackageVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,4 +12,5 @@
     <ProjectReference Include="..\AuroraModularis.Modules.PathResolver.Models\AuroraModularis.Modules.PathResolver.Models.csproj" />
   </ItemGroup>
 
+	<Import Project="$(SolutionDir)\Version.props" />
 </Project>

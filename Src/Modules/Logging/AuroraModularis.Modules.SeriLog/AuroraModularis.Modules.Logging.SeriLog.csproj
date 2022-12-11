@@ -3,9 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <BaseOutputPath>.\..\..\..\Dist</BaseOutputPath>
 	<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-	<PackageVersion>1.0.6</PackageVersion>
 	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
@@ -22,4 +20,5 @@
     <ProjectReference Include="..\AuroraModularis.Logging.Models\AuroraModularis.Logging.Models.csproj" />
   </ItemGroup>
 
+	<Import Project="$(SolutionDir)\Version.props" />
 </Project>
