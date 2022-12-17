@@ -97,7 +97,7 @@ public class Container : Container.IScope
 
         if (!_registeredTypes.TryGetValue(type, out registeredType))
         {
-            return null;
+            return FactoryFromType(type).Invoke(_lifetime);
         }
 
         return registeredType(_lifetime);
