@@ -19,6 +19,6 @@ public class BootstrapperBuilder : IBootstrapBuilder
             Configuration.SettingsProvider = new DefaultSettingsProvider();
         }
 
-        return Task.Run(() => Bootstrapper.RunAsync(Configuration));
+        return Bootstrapper.RunAsync(Configuration);
     }
 }
