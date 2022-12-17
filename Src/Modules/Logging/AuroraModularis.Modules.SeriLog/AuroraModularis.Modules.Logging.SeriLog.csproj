@@ -16,7 +16,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\AuroraModularis\AuroraModularis.csproj" />
-    <ProjectReference Include="..\..\PathResolver\AuroraModularis.Modules.PathResolver.Models\AuroraModularis.Modules.PathResolver.Models.csproj" />
     <ProjectReference Include="..\AuroraModularis.Logging.Models\AuroraModularis.Logging.Models.csproj" />
   </ItemGroup>
 
