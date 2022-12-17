@@ -14,8 +14,6 @@ internal class Bootstrapper
         var messageBroker = new MessageBroker();
         messageBroker.Start();
 
-        TinyIoCContainer.Current.AutoRegister();
-
         TinyIoCContainer.Current.Register(moduleLoader);
         moduleLoader.Load(config, messageBroker);
 

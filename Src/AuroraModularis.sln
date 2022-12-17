@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Projektmappenelemente", "Projektmappenelemente", "{DA1F9F32-7E2A-47A6-877F-82139B738627}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		Version.props = Version.props
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestApp", "TestApp", "{48E93A7B-7583-40BB-A2F1-32A711F519C6}"
@@ -30,9 +31,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestGui", "TestApp\TestGui\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestGui.Modules.TestUIModule", "Modules\TestGui.Modules.TestUIModule\TestGui.Modules.TestUIModule.csproj", "{BDC3923A-F5A2-413D-9D92-A18754999943}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuroraModularis.Modules.PathResolver.Models", "Modules\PathResolver\AuroraModularis.Modules.PathResolver.Models\AuroraModularis.Modules.PathResolver.Models.csproj", "{FBA6F1E5-2B1C-4D9C-9A21-CFD87B537F91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuroraModularis.Modules.PathResolver.Models", "Modules\PathResolver\AuroraModularis.Modules.PathResolver.Models\AuroraModularis.Modules.PathResolver.Models.csproj", "{FBA6F1E5-2B1C-4D9C-9A21-CFD87B537F91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuroraModularis.Modules.PathResolver", "Modules\PathResolver\AuroraModularis.Modules.PathResolver\AuroraModularis.Modules.PathResolver.csproj", "{DB636363-6AB0-4B87-A139-F9CA761C283B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuroraModularis.Modules.PathResolver", "Modules\PathResolver\AuroraModularis.Modules.PathResolver\AuroraModularis.Modules.PathResolver.csproj", "{DB636363-6AB0-4B87-A139-F9CA761C283B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
