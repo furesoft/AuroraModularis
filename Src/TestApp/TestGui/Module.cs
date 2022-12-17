@@ -9,7 +9,7 @@ public class Module : AuroraModularis.Module
 {
     private ModuleLoader moduleLoader;
 
-    public override Task OnStart(TinyIoCContainer container)
+    public override Task OnStart(Container container)
     {
         var frm = new Form1();
         frm.FormClosing += (s, e) =>
@@ -42,7 +42,7 @@ public class Module : AuroraModularis.Module
         return Task.CompletedTask;
     }
 
-    public override void RegisterServices(TinyIoCContainer container)
+    public override void RegisterServices(Container container)
     {
         moduleLoader = container.Resolve<ModuleLoader>();
     }

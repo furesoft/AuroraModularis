@@ -30,9 +30,8 @@ public class ModuleLoader
         for (int i = 0; i < orderedModulesTypes.Length; i++)
         {
             var moduleType = orderedModulesTypes[i];
-            var moduleInstance = (Module)TinyIoCContainer.Current.Resolve(moduleType);
+            var moduleInstance = Container.Current.Resolve<Module>(moduleType);
 
-            
             if (hook != null && !hook.ShouldLoadModule(moduleInstance))
             {
                 moduleTypes.Remove(moduleType);
@@ -51,7 +50,7 @@ public class ModuleLoader
 
             Modules.Add(moduleInstance);
 
-            moduleInstance.RegisterServices(TinyIoCContainer.Current);
+            moduleInstance.RegisterServices(Container.Current);
 
             hook?.AfterLoadModule(moduleInstance);
         }

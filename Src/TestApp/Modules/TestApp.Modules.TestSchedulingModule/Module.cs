@@ -13,7 +13,7 @@ public class Module : AuroraModularis.Module, IScheduledModule
 
     public IScheduler Scheduler { get; set; }
 
-    public override Task OnStart(TinyIoCContainer container)
+    public override Task OnStart(Container container)
     {
         return Task.CompletedTask;
     }

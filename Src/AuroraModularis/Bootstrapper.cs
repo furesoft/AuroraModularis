@@ -14,7 +14,7 @@ internal class Bootstrapper
         var messageBroker = new MessageBroker();
         messageBroker.Start();
 
-        TinyIoCContainer.Current.Register(moduleLoader);
+        Container.Current.Register(moduleLoader);
         moduleLoader.Load(config, messageBroker);
 
         var factory = new StdSchedulerFactory();
@@ -30,7 +30,7 @@ internal class Bootstrapper
             }
         };
 
-        Task.WaitAll(moduleLoader.Modules.Select(_ => _.OnStart(TinyIoCContainer.Current)).ToArray());
+        Task.WaitAll(moduleLoader.Modules.Select(_ => _.OnStart(Container.Current)).ToArray());
     }
 
     private static async Task ScheduleJobs(ModuleLoader moduleLoader, IScheduler scheduler)

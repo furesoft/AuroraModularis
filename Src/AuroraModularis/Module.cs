@@ -1,4 +1,5 @@
-﻿using AuroraModularis.Messaging;
+﻿using AuroraModularis.Core;
+using AuroraModularis.Messaging;
 
 namespace AuroraModularis;
 
@@ -15,11 +16,11 @@ public abstract class Module
     public object Settings { get; set; }
     public bool UseSettings { get; set; }
 
-    public virtual void RegisterServices(TinyIoCContainer container)
+    public virtual void RegisterServices(Container container)
     {
     }
 
-    public abstract Task OnStart(TinyIoCContainer container);
+    public abstract Task OnStart(Container container);
 
     public virtual void OnInit()
     {
