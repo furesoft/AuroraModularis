@@ -15,18 +15,22 @@ public class ModuleLoader
         var moduleTypes = new List<Type>();
         var hook = config.Hooks.GetHook<IModuleLoadingHook>();
 
-        foreach (var modPath in Directory.GetFiles(config.ModulesPath, "*.dll"))
+        if (!string.IsNullOrEmpty(config.ModulesPath))
         {
-            var moduleType = Assembly.LoadFrom(modPath).GetTypes().FirstOrDefault(type => !type.IsAbstract && type.IsAssignableTo(typeof(Module)));
-            if (moduleType != null)
+            Parallel.ForEach(Directory.GetFiles(config.ModulesPath, "*.dll"), modPath =>
             {
-                moduleTypes.Add(moduleType);
+                var moduleType = Assembly.LoadFrom(modPath).GetTypes().FirstOrDefault(type => !type.IsAbstract && type.IsAssignableTo(typeof(Module)));
+                if (moduleType != null)
+                {
+                    moduleTypes.Add(moduleType);
 
-                hook?.BeforeLoadModule(moduleType);
-            }
+                    hook?.BeforeLoadModule(moduleType);
+                }
+            });
         }
 
         var orderedModulesTypes = moduleTypes.OrderByDescending(GetModulePriority).ToArray();
+
         for (int i = 0; i < orderedModulesTypes.Length; i++)
         {
             var moduleType = orderedModulesTypes[i];
