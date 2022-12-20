@@ -8,16 +8,23 @@ namespace AuroraModularis;
 
 public class ModuleLoader
 {
+    private readonly ModuleConfigration _config;
+
+    public ModuleLoader(ModuleConfigration config)
+    {
+        _config = config;
+    }
+
     public ConcurrentBag<Module> Modules { get; private set; } = new();
 
-    public void Load(ModuleConfigration config, MessageBroker messageBroker)
+    public void Load(MessageBroker messageBroker)
     {
         var moduleTypes = new List<Type>();
-        var hook = config.Hooks.GetHook<IModuleLoadingHook>();
+        var hook = _config.Hooks.GetHook<IModuleLoadingHook>();
 
-        if (!string.IsNullOrEmpty(config.ModulesPath))
+        if (!string.IsNullOrEmpty(_config.ModulesPath))
         {
-            Parallel.ForEach(Directory.GetFiles(config.ModulesPath, "*.dll"), modPath =>
+            Parallel.ForEach(Directory.GetFiles(_config.ModulesPath, "*.dll"), modPath =>
             {
                 var moduleType = Assembly.LoadFrom(modPath).GetTypes().FirstOrDefault(type => !type.IsAbstract && type.IsAssignableTo(typeof(Module)));
                 if (moduleType != null)
@@ -49,7 +56,7 @@ public class ModuleLoader
 
             if (moduleInstance.UseSettings)
             {
-                InitSettings(config, moduleInstance);
+                InitSettings(_config, moduleInstance);
             }
 
             Modules.Add(moduleInstance);

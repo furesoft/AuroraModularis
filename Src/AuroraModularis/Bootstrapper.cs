@@ -9,13 +9,23 @@ internal class Bootstrapper
 {
     public static async Task RunAsync(ModuleConfigration config)
     {
-        ModuleLoader moduleLoader = new();
+        ModuleLoader moduleLoader = new(config);
 
         var messageBroker = new MessageBroker();
         messageBroker.Start();
 
         Container.Current.Register(moduleLoader);
-        moduleLoader.Load(config, messageBroker);
+        moduleLoader.Load(messageBroker);
+
+        if (config.Loader != null)
+        {
+            config.Loader.Load(messageBroker);
+
+            foreach (var module in config.Loader.Modules)
+            {
+                moduleLoader.Modules.Add(module);
+            }
+        }
 
         var factory = new StdSchedulerFactory();
         var scheduler = await factory.GetScheduler();

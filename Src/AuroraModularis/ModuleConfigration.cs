@@ -15,4 +15,6 @@ public class ModuleConfigration
     public ModuleHookProvider Hooks { get; set; } = new();
 
     public IModuleSettingsProvider SettingsProvider { get; set; }
+
+    public ModuleLoader Loader { get; set; }
 }

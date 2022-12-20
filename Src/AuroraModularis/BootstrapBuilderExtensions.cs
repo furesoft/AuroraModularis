@@ -25,6 +25,13 @@ public static class BootstrapBuilderExtensions
         return builder;
     }
 
+    public static IBootstrapBuilder WithModuleLoader(this IBootstrapBuilder builder, ModuleLoader loader)
+    {
+        builder.Configuration.Loader = loader;
+
+        return builder;
+    }
+
     public static IBootstrapBuilder WithSettingsProvider<T>(this IBootstrapBuilder builder)
         where T : IModuleSettingsProvider, new()
     {
