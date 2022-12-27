@@ -26,12 +26,18 @@ public class ModuleLoader
         {
             Parallel.ForEach(Directory.GetFiles(_config.ModulesPath, "*.dll"), modPath =>
             {
-                var moduleType = Assembly.LoadFrom(modPath).GetTypes().FirstOrDefault(type => !type.IsAbstract && type.IsAssignableTo(typeof(Module)));
-                if (moduleType != null)
+                try
                 {
-                    moduleTypes.Add(moduleType);
+                    var moduleType = Assembly.LoadFrom(modPath).GetTypes().FirstOrDefault(type => !type.IsAbstract && type.IsAssignableTo(typeof(Module)));
+                    if (moduleType != null)
+                    {
+                        moduleTypes.Add(moduleType);
 
-                    hook?.BeforeLoadModule(moduleType);
+                        hook?.BeforeLoadModule(moduleType);
+                    }
+                }
+                catch (Exception ex)
+                {
                 }
             });
         }
