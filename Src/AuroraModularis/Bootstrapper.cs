@@ -1,4 +1,5 @@
-﻿using AuroraModularis.Core;
+﻿using System.Security.Permissions;
+using AuroraModularis.Core;
 using AuroraModularis.Messaging;
 using Quartz;
 using Quartz.Impl;
@@ -29,6 +30,9 @@ internal class Bootstrapper
 
         var factory = new StdSchedulerFactory();
         var scheduler = await factory.GetScheduler();
+
+        Container.Current.Register(scheduler);
+
         await ScheduleJobs(moduleLoader, scheduler);
 
         AppDomain.CurrentDomain.ProcessExit += async (s, e) =>
