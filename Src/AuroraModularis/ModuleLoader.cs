@@ -24,7 +24,7 @@ public class ModuleLoader
 
         if (!string.IsNullOrEmpty(_config.ModulesPath))
         {
-            Parallel.ForEach(Directory.GetFiles(_config.ModulesPath, "*.dll"), modPath =>
+            foreach (var modPath in Directory.GetFiles(_config.ModulesPath, "*.dll"))
             {
                 try
                 {
@@ -39,7 +39,7 @@ public class ModuleLoader
                 catch (Exception ex)
                 {
                 }
-            });
+            }
         }
 
         var orderedModulesTypes = moduleTypes.OrderByDescending(GetModulePriority).ToArray();
