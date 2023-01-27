@@ -15,12 +15,14 @@ public class ModuleLoader
         _config = config;
     }
 
-    public ConcurrentBag<Module> Modules { get; private set; } = new();
+    public ConcurrentBag<Module> Modules { get; } = new();
 
     public void Load(MessageBroker messageBroker)
     {
         var moduleTypes = new List<Type>();
         var hook = _config.Hooks.GetHook<IModuleLoadingHook>();
+
+        Container.Current.Register<ITypeFinder>(new DefaultTypeFinder());
 
         if (!string.IsNullOrEmpty(_config.ModulesPath))
         {
