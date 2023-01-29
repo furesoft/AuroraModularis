@@ -5,7 +5,7 @@ namespace TestGui.Modules.TestUIModule;
 
 public class Module : AuroraModularis.Module
 {
-    public override Task OnStart(Container container)
+    public override Task OnStart(ServiceContainer serviceContainer)
     {
         Button button = new Button() { Text = "btn " };
         button.Height = 25;

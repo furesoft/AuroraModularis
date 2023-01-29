@@ -13,7 +13,7 @@ public class Module : AuroraModularis.Module
         this.logger = logger;
     }
 
-    public override Task OnStart(Container container) => Task.Run(GenerateMessages);
+    public override Task OnStart(ServiceContainer serviceContainer) => Task.Run(GenerateMessages);
 
     private async Task GenerateMessages()
     {

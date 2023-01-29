@@ -13,7 +13,7 @@ public class Module : AuroraModularis.Module, IScheduledModule
 
     public IScheduler Scheduler { get; set; }
 
-    public override Task OnStart(Container container)
+    public override Task OnStart(ServiceContainer serviceContainer)
     {
         return Task.CompletedTask;
     }

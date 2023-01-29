@@ -18,7 +18,7 @@ public class DefaultTypeFinder : ITypeFinder
     {
         return (
             from type in FindTypes<T>()
-            select Container.Current.Resolve<T>(type)).ToArray();
+            select ServiceContainer.Current.Resolve<T>(type)).ToArray();
     }
     
     private static Type[] TryGetTypes(System.Reflection.Assembly s)

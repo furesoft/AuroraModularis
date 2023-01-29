@@ -9,9 +9,9 @@ namespace AuroraModularis.Core;
 /// <summary>
 /// Inversion of control container handles dependency injection for registered types
 /// </summary>
-public class Container : Container.IScope
+public class ServiceContainer : ServiceContainer.IScope
 {
-    private static Lazy<Container> _current;
+    private static Lazy<ServiceContainer> _current;
 
     // Map of registered types
     private readonly Dictionary<Type, Func<ILifetime, object>> _registeredTypes = new Dictionary<Type, Func<ILifetime, object>>();
@@ -22,7 +22,7 @@ public class Container : Container.IScope
     /// <summary>
     /// Creates a new instance of IoC Container
     /// </summary>
-    public Container() => _lifetime = new ContainerLifetime(t => _registeredTypes[t]);
+    public ServiceContainer() => _lifetime = new ContainerLifetime(t => _registeredTypes[t]);
 
     /// <summary>
     /// Represents a scope in which per-scope objects are instantiated a single time
@@ -55,7 +55,7 @@ public class Container : Container.IScope
         object GetServicePerScope(Type type, Func<ILifetime, object> factory);
     }
 
-    public static Container Current
+    public static ServiceContainer Current
     {
         get
         {
@@ -233,44 +233,44 @@ public static class ContainerExtensions
     /// Registers an implementation type for the specified interface
     /// </summary>
     /// <typeparam name="T">Interface to register</typeparam>
-    /// <param name="container">This container instance</param>
+    /// <param name="serviceContainer">This container instance</param>
     /// <param name="type">Implementing type</param>
     /// <returns>IRegisteredType object</returns>
-    public static Container.IRegisteredType Register<T>(this Container container, Type type)
-        => container.Register(typeof(T), type);
+    public static ServiceContainer.IRegisteredType Register<T>(this ServiceContainer serviceContainer, Type type)
+        => serviceContainer.Register(typeof(T), type);
 
     /// <summary>
     /// Registers an implementation type for the specified interface
     /// </summary>
     /// <typeparam name="TInterface">Interface to register</typeparam>
     /// <typeparam name="TImplementation">Implementing type</typeparam>
-    /// <param name="container">This container instance</param>
+    /// <param name="serviceContainer">This container instance</param>
     /// <returns>IRegisteredType object</returns>
-    public static Container.IRegisteredType Register<TInterface, TImplementation>(this Container container)
+    public static ServiceContainer.IRegisteredType Register<TInterface, TImplementation>(this ServiceContainer serviceContainer)
         where TImplementation : TInterface
-        => container.Register(typeof(TInterface), typeof(TImplementation));
+        => serviceContainer.Register(typeof(TInterface), typeof(TImplementation));
 
     /// <summary>
     /// Registers a factory function which will be called to resolve the specified interface
     /// </summary>
     /// <typeparam name="T">Interface to register</typeparam>
-    /// <param name="container">This container instance</param>
+    /// <param name="serviceContainer">This container instance</param>
     /// <param name="factory">Factory method</param>
     /// <returns>IRegisteredType object</returns>
-    public static Container.IRegisteredType Register<T>(this Container container, Func<T> factory)
-        => container.Register(typeof(T), () => factory());
+    public static ServiceContainer.IRegisteredType Register<T>(this ServiceContainer serviceContainer, Func<T> factory)
+        => serviceContainer.Register(typeof(T), () => factory());
 
-    public static Container.IRegisteredType Register<T>(this Container container, T impl) =>
-        container.Register<T>(() => impl);
+    public static ServiceContainer.IRegisteredType Register<T>(this ServiceContainer serviceContainer, T impl) =>
+        serviceContainer.Register<T>(() => impl);
 
     /// <summary>
     /// Registers a type
     /// </summary>
-    /// <param name="container">This container instance</param>
+    /// <param name="serviceContainer">This container instance</param>
     /// <typeparam name="T">Type to register</typeparam>
     /// <returns>IRegisteredType object</returns>
-    public static Container.IRegisteredType Register<T>(this Container container)
-        => container.Register(typeof(T), typeof(T));
+    public static ServiceContainer.IRegisteredType Register<T>(this ServiceContainer serviceContainer)
+        => serviceContainer.Register(typeof(T), typeof(T));
 
     /// <summary>
     /// Returns an implementation of the specified interface
@@ -278,7 +278,7 @@ public static class ContainerExtensions
     /// <typeparam name="T">Interface type</typeparam>
     /// <param name="scope">This scope instance</param>
     /// <returns>Object implementing the interface</returns>
-    public static T Resolve<T>(this Container.IScope scope) => (T)scope.GetService(typeof(T));
+    public static T Resolve<T>(this ServiceContainer.IScope scope) => (T)scope.GetService(typeof(T));
 
-    public static T Resolve<T>(this Container.IScope scope, Type type) => (T)scope.GetService(type);
+    public static T Resolve<T>(this ServiceContainer.IScope scope, Type type) => (T)scope.GetService(type);
 }

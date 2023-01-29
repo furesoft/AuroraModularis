@@ -15,7 +15,7 @@ internal class Bootstrapper
         var messageBroker = new MessageBroker();
         messageBroker.Start();
 
-        Container.Current.Register(moduleLoader);
+        ServiceContainer.Current.Register(moduleLoader);
         moduleLoader.Load(messageBroker);
 
         if (config.Loader != null)
@@ -31,7 +31,7 @@ internal class Bootstrapper
         var factory = new StdSchedulerFactory();
         var scheduler = await factory.GetScheduler();
 
-        Container.Current.Register(scheduler);
+        ServiceContainer.Current.Register(scheduler);
 
         await ScheduleJobs(moduleLoader, scheduler);
 
@@ -44,7 +44,7 @@ internal class Bootstrapper
             }
         };
 
-        Task.WaitAll(moduleLoader.Modules.Select(_ => _.OnStart(Container.Current)).ToArray());
+        Task.WaitAll(moduleLoader.Modules.Select(_ => _.OnStart(ServiceContainer.Current)).ToArray());
     }
 
     private static async Task ScheduleJobs(ModuleLoader moduleLoader, IScheduler scheduler)

@@ -16,11 +16,11 @@ public abstract class Module
     public object Settings { get; set; }
     public bool UseSettings { get; set; }
 
-    public virtual void RegisterServices(Container container)
+    public virtual void RegisterServices(ServiceContainer serviceContainer)
     {
     }
 
-    public abstract Task OnStart(Container container);
+    public abstract Task OnStart(ServiceContainer serviceContainer);
 
     public virtual void OnInit()
     {

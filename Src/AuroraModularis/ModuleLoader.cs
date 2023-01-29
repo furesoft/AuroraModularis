@@ -22,7 +22,7 @@ public class ModuleLoader
         var moduleTypes = new List<Type>();
         var hook = _config.Hooks.GetHook<IModuleLoadingHook>();
 
-        Container.Current.Register<ITypeFinder>(new DefaultTypeFinder());
+        ServiceContainer.Current.Register<ITypeFinder>(new DefaultTypeFinder());
 
         if (!string.IsNullOrEmpty(_config.ModulesPath))
         {
@@ -49,7 +49,7 @@ public class ModuleLoader
         for (int i = 0; i < orderedModulesTypes.Length; i++)
         {
             var moduleType = orderedModulesTypes[i];
-            var moduleInstance = Container.Current.Resolve<Module>(moduleType);
+            var moduleInstance = ServiceContainer.Current.Resolve<Module>(moduleType);
 
             if (hook != null && !hook.ShouldLoadModule(moduleInstance))
             {
@@ -69,7 +69,7 @@ public class ModuleLoader
 
             Modules.Add(moduleInstance);
 
-            moduleInstance.RegisterServices(Container.Current);
+            moduleInstance.RegisterServices(ServiceContainer.Current);
 
             hook?.AfterLoadModule(moduleInstance);
         }
