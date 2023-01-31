@@ -1,8 +1,8 @@
 ﻿using AuroraModularis.Core;
-using AuroraModularis.Hooks.Core;
 using AuroraModularis.Messaging;
 using System.Collections.Concurrent;
 using System.Reflection;
+using AuroraModularis.Core.Hooks;
 
 namespace AuroraModularis;
 
@@ -75,7 +75,7 @@ public class ModuleLoader
         }
     }
 
-    private static void InitSettings(ModuleConfigration config, Module moduleInstance)
+    private void InitSettings(ModuleConfigration config, Module moduleInstance)
     {
         moduleInstance.SettingsHandler = new(moduleInstance, config);
 
@@ -85,7 +85,16 @@ public class ModuleLoader
         }
         else
         {
-            moduleInstance.Settings = moduleInstance.SettingsHandler.Load(moduleInstance.Settings.GetType());
+            var hook = _config.Hooks.GetHook<ISettingsLoadingHook>();
+
+            if (hook != null)
+            {
+                moduleInstance.Settings = hook.LoadSettingForModule(moduleInstance.GetType());
+            }
+            else
+            {
+                moduleInstance.Settings = moduleInstance.SettingsHandler.Load(moduleInstance.Settings.GetType());
+            }
         }
     }
 
