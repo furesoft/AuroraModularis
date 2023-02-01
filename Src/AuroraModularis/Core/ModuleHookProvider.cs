@@ -1,3 +1,4 @@
+using System.Reflection;
 using System.Runtime.CompilerServices;
 
 namespace AuroraModularis.Core;
@@ -12,9 +13,20 @@ public class ModuleHookProvider
         _hooks.Add(new T());
     }
 
+    public T GetReturningHook<T>()
+        where T : IModuleHook
+    {
+        return _hooks.OfType<T>().Last();
+    }
+    
     public T GetHook<T>()
         where T : IModuleHook
     {
-        return _hooks.OfType<T>().FirstOrDefault();
+        var proxy = new ModuleHookProxy<T>
+        {
+            Hooks = _hooks.OfType<T>()
+        };
+
+        return DispatchProxy.Create<T, ModuleHookProxy<T>>();
     }
 }
