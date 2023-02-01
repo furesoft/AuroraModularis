@@ -31,6 +31,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestGui", "TestApp\TestGui\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestGui.Modules.TestUIModule", "Modules\TestGui.Modules.TestUIModule\TestGui.Modules.TestUIModule.csproj", "{BDC3923A-F5A2-413D-9D92-A18754999943}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuroraModularis.Settings.Toml", "Libraries\AuroraModularis.Settings.Toml\AuroraModularis.Settings.Toml.csproj", "{EC9DC13A-D85A-46D7-B935-D3B25714B523}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThirdParties", "ThirdParties", "{266B905B-969C-43BA-8D1E-6A33A0DC74AE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +73,10 @@ Global
 		{BDC3923A-F5A2-413D-9D92-A18754999943}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BDC3923A-F5A2-413D-9D92-A18754999943}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BDC3923A-F5A2-413D-9D92-A18754999943}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC9DC13A-D85A-46D7-B935-D3B25714B523}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC9DC13A-D85A-46D7-B935-D3B25714B523}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC9DC13A-D85A-46D7-B935-D3B25714B523}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC9DC13A-D85A-46D7-B935-D3B25714B523}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -82,6 +90,7 @@ Global
 		{4CC6D716-6577-40AF-B3A0-DD8CE172626D} = {9E170B75-F442-4AD2-9495-1DBF5092647C}
 		{8FD75E5D-117E-4D67-A254-317EB2F91224} = {48E93A7B-7583-40BB-A2F1-32A711F519C6}
 		{BDC3923A-F5A2-413D-9D92-A18754999943} = {9E170B75-F442-4AD2-9495-1DBF5092647C}
+		{EC9DC13A-D85A-46D7-B935-D3B25714B523} = {266B905B-969C-43BA-8D1E-6A33A0DC74AE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F4DB5578-7615-476B-A10C-00253FB6BADF}
