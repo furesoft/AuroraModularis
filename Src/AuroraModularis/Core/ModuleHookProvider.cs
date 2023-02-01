@@ -10,7 +10,12 @@ public class ModuleHookProvider
     public void Register<T>()
         where T : IModuleHook, new()
     {
-        _hooks.Add(new T());
+        Register(new T());
+    }
+
+    public void Register(IModuleHook hook)
+    {
+        _hooks.Add(hook);
     }
 
     public T GetReturningHook<T>()
