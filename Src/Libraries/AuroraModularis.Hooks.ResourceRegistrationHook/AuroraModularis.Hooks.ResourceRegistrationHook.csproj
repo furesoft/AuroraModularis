@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Description>This extension for AuroraModularis allows to automaticly register resources and datatemplates to the avalonia main application. The resources have to be xml files and EmbeddedResource</Description>
+        <PackageProjectUrl>https://github.com/furesoft/AuroraModularis</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/furesoft/AuroraModularis</RepositoryUrl>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\AuroraModularis\AuroraModularis.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Avalonia" Version="0.10.18" />
+      <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="0.10.18" />
+    </ItemGroup>
+
+</Project>

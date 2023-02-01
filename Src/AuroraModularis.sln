@@ -41,6 +41,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuroraModularis.Settings.Li
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SettingsProvider", "SettingsProvider", "{FA8932C6-A796-48D1-AB0A-355AA606BF36}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hooks", "Hooks", "{CD13D9EC-17E1-4823-8530-1D1900613055}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuroraModularis.Hooks.ResourceRegistrationHook", "Libraries\AuroraModularis.Hooks.ResourceRegistrationHook\AuroraModularis.Hooks.ResourceRegistrationHook.csproj", "{B1C8C17A-2D67-4D65-A3DD-390FA5CCDB78}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -91,6 +95,10 @@ Global
 		{0F540CC4-3E13-422C-86B9-66824CFCE3EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F540CC4-3E13-422C-86B9-66824CFCE3EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F540CC4-3E13-422C-86B9-66824CFCE3EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1C8C17A-2D67-4D65-A3DD-390FA5CCDB78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1C8C17A-2D67-4D65-A3DD-390FA5CCDB78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1C8C17A-2D67-4D65-A3DD-390FA5CCDB78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1C8C17A-2D67-4D65-A3DD-390FA5CCDB78}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -108,6 +116,8 @@ Global
 		{0F540CC4-3E13-422C-86B9-66824CFCE3EC} = {FA8932C6-A796-48D1-AB0A-355AA606BF36}
 		{EC9DC13A-D85A-46D7-B935-D3B25714B523} = {FA8932C6-A796-48D1-AB0A-355AA606BF36}
 		{99086771-4092-42F3-9897-58503CB95B9E} = {FA8932C6-A796-48D1-AB0A-355AA606BF36}
+		{CD13D9EC-17E1-4823-8530-1D1900613055} = {266B905B-969C-43BA-8D1E-6A33A0DC74AE}
+		{B1C8C17A-2D67-4D65-A3DD-390FA5CCDB78} = {CD13D9EC-17E1-4823-8530-1D1900613055}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F4DB5578-7615-476B-A10C-00253FB6BADF}
