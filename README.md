@@ -3,7 +3,7 @@ A framework for building modular monoliths.
 
 ## Architecture
 
-A main application bootstraps the modules. A module consists of two librarys: One for the the module logic and the other for the models that are used to expose interfaces and DTOs to other modules. A module has to have an implementation of the `module` class. This implementation can register services to make logic available to other modules. A module can also send/receive messages to other modules thorugh the `Inbox`/`Outbox` properties. The bootstrapper has a messagebroker to find the modules which are subscribing to a specific kind of messages. A module can expect module specific settings. The settings are automaticly serialized/deserialized to the `Settings` object. 
+A main application bootstraps the modules. A module consists of two librarys: One for the the module logic and the other for the models that are used to expose interfaces and DTOs to other modules. A module has to have an implementation of the `Module` class. This implementation can register services to make logic available to other modules. A module can also send/receive messages to other modules through the `Inbox`/`Outbox` properties. The bootstrapper has a messagebroker to find the modules which are subscribing to a specific kind of messages. A module can expect module specific settings. The settings are automaticly serialized/deserialized to the `Settings` object. 
 
 ## Bootstrapping the main application
 
@@ -11,7 +11,7 @@ The main application has to start a bootstrapper. A bootstrapper can be configur
 
 ### Extending the behavior of the bootstrapper
 
-The bootstrapper has mechanisms called `Hooks` to affect the behavior. The `IModuleLoadingHook` can decide if modules should be loaded or do other stuff on load, like register resources globally for UI. The `ISettingsLoadingHook` can inject specific custom settings to a module. This behavior can be useful if you want dynamic settings. A good example for dynamic settings are paths. Per default module settings are serialized as json file but you can implement your own `SettingsProvider` to use other formats. 
+The bootstrapper has mechanisms called `Hooks` to affect the behavior. The `IModuleLoadingHook` can decide if modules should be loaded or do other stuff on load, like register resources globally for UI. The `ISettingsLoadingHook` can inject specific custom settings to a module. This behavior can be useful if you want dynamic settings. A good example for dynamic settings are paths. Per default module settings are serialized as json file but you can implement your own `SettingsProvider` to use other formats. There are also some formats available at nuget.
 
 ## Examples
 
