@@ -40,3 +40,7 @@ AuroraModularis also provides some default services to work better with extensib
 The `ITypeFinder` service helps to locate specific types that are implementing a specific interface. This is useful for example to generate an extendable menu.
 
 The module loader is also provided to have access to other modules. Like for example enumerating all modules and display it in the UI. 
+
+## Scheduling
+
+A module can schedule jobs using the Quartz library. The module specific scheduler is registered in the IOC container. 
