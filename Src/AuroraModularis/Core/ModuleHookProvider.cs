@@ -16,7 +16,7 @@ public class ModuleHookProvider
     public T GetReturningHook<T>()
         where T : IModuleHook
     {
-        return _hooks.OfType<T>().Last();
+        return _hooks.OfType<T>().LastOrDefault();
     }
     
     public T GetHook<T>()

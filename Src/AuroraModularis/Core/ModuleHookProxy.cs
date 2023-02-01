@@ -2,7 +2,7 @@
 
 namespace AuroraModularis.Core;
 
-internal sealed class ModuleHookProxy<T> : DispatchProxy
+internal class ModuleHookProxy<T> : DispatchProxy
 {
     public IEnumerable<T> Hooks { get; set; }
     
@@ -11,6 +11,11 @@ internal sealed class ModuleHookProxy<T> : DispatchProxy
         if(targetMethod.ReturnType != typeof(void))
         {
             throw new InvalidOperationException("Hooks cannot work with returntypes. Use `GetReturningHook<T>()` instead");
+        }
+
+        if (!Hooks.Any())
+        {
+            return null;
         }
         
         foreach (var hook in Hooks)

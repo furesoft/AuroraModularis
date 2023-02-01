@@ -21,6 +21,7 @@ public class ModuleLoader
     {
         var moduleTypes = new List<Type>();
         var hook = _config.Hooks.GetHook<IModuleLoadingHook>();
+        var returningHook = _config.Hooks.GetReturningHook<IModuleLoadingHook>();
 
         ServiceContainer.Current.Register<ITypeFinder>(new DefaultTypeFinder());
 
@@ -35,7 +36,7 @@ public class ModuleLoader
                     {
                         moduleTypes.Add(moduleType);
 
-                        hook?.BeforeLoadModule(moduleType);
+                        hook.BeforeLoadModule(moduleType);
                     }
                 }
                 catch (Exception ex)
@@ -51,7 +52,7 @@ public class ModuleLoader
             var moduleType = orderedModulesTypes[i];
             var moduleInstance = ServiceContainer.Current.Resolve<Module>(moduleType);
 
-            if (hook != null && !hook.ShouldLoadModule(moduleInstance))
+            if (returningHook != null && !returningHook.ShouldLoadModule(moduleInstance))
             {
                 moduleTypes.Remove(moduleType);
                 continue;
@@ -85,7 +86,7 @@ public class ModuleLoader
         }
         else
         {
-            var hook = _config.Hooks.GetHook<ISettingsLoadingHook>();
+            var hook = _config.Hooks.GetReturningHook<ISettingsLoadingHook>();
 
             if (hook != null)
             {
