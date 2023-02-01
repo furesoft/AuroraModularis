@@ -8,7 +8,7 @@
         <Description>This extension for AuroraModularis allows to automaticly register resources and datatemplates to the avalonia main application. The resources have to be xml files and EmbeddedResource</Description>
         <PackageProjectUrl>https://github.com/furesoft/AuroraModularis</PackageProjectUrl>
         <RepositoryUrl>https://github.com/furesoft/AuroraModularis</RepositoryUrl>
-        <Version>1.0.1</Version>
+        <Version>1.0.3</Version>
         <PackageTags>auroramodularis</PackageTags>
     </PropertyGroup>
 

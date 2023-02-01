@@ -8,6 +8,13 @@ namespace AuroraModularis.Hooks.ResourceRegistrationHook;
 
 public class ModuleLoadingHook : IModuleLoadingHook
 {
+    private readonly Application _app;
+
+    public ModuleLoadingHook(Application app)
+    {
+        _app = app;
+    }
+
     public bool ShouldLoadModule(AuroraModularis.Module module)
     {
         return true;
@@ -23,21 +30,21 @@ public class ModuleLoadingHook : IModuleLoadingHook
     {
     }
 
-    private static void RegisterIconsFrom(Type type)
+    private void RegisterIconsFrom(Type type)
     {
         var resDictionary = GetFromResource<ResourceDictionary>(type, "Icons");
 
         if (resDictionary is null) return;
 
-        Application.Current!.Resources.MergedDictionaries.Add(resDictionary);
+        _app.Resources.MergedDictionaries.Add(resDictionary);
     }
 
-    private static void RegisterDataTemplates(Type type)
+    private void RegisterDataTemplates(Type type)
     {
         var dataTemplates = GetFromResource<DataTemplates>(type, "DataTemplates");
         if (dataTemplates is null) return;
 
-        Application.Current!.DataTemplates.AddRange(dataTemplates);
+        _app.DataTemplates.AddRange(dataTemplates);
     }
 
     private static T? GetFromResource<T>(Type type, string name)

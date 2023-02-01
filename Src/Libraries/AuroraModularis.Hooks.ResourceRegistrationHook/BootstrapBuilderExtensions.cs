@@ -1,11 +1,15 @@
 ﻿using AuroraModularis.Core;
+using Avalonia;
 
 namespace AuroraModularis.Hooks.ResourceRegistrationHook;
 
 public static class BootstrapBuilderExtensions
 {
-    public static IBootstrapBuilder AddResourceHook(this IBootstrapBuilder builder)
+    public static IBootstrapBuilder AddResourceHook(this IBootstrapBuilder builder, Application app)
     {
-        return builder.WithHook<ModuleLoadingHook>();
+        var hook = new ModuleLoadingHook(app);
+        builder.Configuration.Hooks.Register(hook);
+
+        return builder;
     }
 }
