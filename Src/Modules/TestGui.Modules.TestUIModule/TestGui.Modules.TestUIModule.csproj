@@ -10,6 +10,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\AuroraModularis\AuroraModularis.csproj" />
+    <ProjectReference Include="..\..\TestApp\Modules\TestConsole.Modules.Producer\TestConsole.Modules.Producer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Icons.xml" />
   </ItemGroup>
 
 </Project>

@@ -12,4 +12,8 @@
     <ProjectReference Include="..\..\..\Modules\Logging\AuroraModularis.Logging.Models\AuroraModularis.Logging.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Icons.xml" />
+  </ItemGroup>
+
 </Project>

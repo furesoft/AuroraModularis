@@ -25,13 +25,8 @@ public class ModuleHookProvider
     }
     
     public T GetHook<T>()
-        where T : IModuleHook
+        where T : class, IModuleHook
     {
-        var proxy = new ModuleHookProxy<T>
-        {
-            Hooks = _hooks.OfType<T>()
-        };
-
-        return DispatchProxy.Create<T, ModuleHookProxy<T>>();
+        return (T)ModuleHookProxy<T>.Create(_hooks.OfType<T>());
     }
 }

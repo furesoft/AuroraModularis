@@ -1,15 +1,20 @@
 ﻿using AuroraModularis;
+using AuroraModularis.Hooks.ResourceRegistrationHook;
+using Avalonia;
 
 namespace TestConsole;
 
 internal class Program
 {
-    private static Task Main(string[] args)
+    private static void Main(string[] args)
     {
-        return BootstrapperBuilder.StartConfigure()
+        var app = new Application();
+        
+        BootstrapperBuilder.StartConfigure()
             .WithAppName("TestConsole")
             .WithModulesBasePath(Environment.CurrentDirectory)
             .WithSettingsBasePath(".")
+            .AddResourceHook(app)
             .BuildAndStartAsync();
     }
 }

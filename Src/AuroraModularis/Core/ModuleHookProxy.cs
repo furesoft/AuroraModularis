@@ -3,8 +3,17 @@
 namespace AuroraModularis.Core;
 
 internal class ModuleHookProxy<T> : DispatchProxy
+    where T : IModuleHook
 {
     public IEnumerable<T> Hooks { get; set; } = Array.Empty<T>();
+    
+    public static IModuleHook Create(IEnumerable<T> hooks)
+    {
+        var proxy = Create<T, ModuleHookProxy<T>>() as ModuleHookProxy<T>;
+        proxy.Hooks = hooks;
+        
+        return (IModuleHook)proxy;
+    }
     
     protected override object Invoke(MethodInfo targetMethod, object[] args)
     {

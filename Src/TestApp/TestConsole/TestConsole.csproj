@@ -10,9 +10,14 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\AuroraModularis\AuroraModularis.csproj" />
+    <ProjectReference Include="..\..\Libraries\AuroraModularis.Hooks.ResourceRegistrationHook\AuroraModularis.Hooks.ResourceRegistrationHook.csproj" />
     <ProjectReference Include="..\..\Modules\Logging\AuroraModularis.Modules.SeriLog\AuroraModularis.Modules.Logging.SeriLog.csproj" />
     <ProjectReference Include="..\Modules\TestApp.Modules.TestSchedulingModule\TestApp.Modules.TestSchedulingModule.csproj" />
     <ProjectReference Include="..\Modules\TestConsole.Modules.Producer\TestConsole.Modules.Producer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="0.10.18" />
   </ItemGroup>
 
 </Project>

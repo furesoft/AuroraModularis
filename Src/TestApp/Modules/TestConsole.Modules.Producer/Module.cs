@@ -17,7 +17,7 @@ public class Module : AuroraModularis.Module
 
     private async Task GenerateMessages()
     {
-        while (true)
+        for(int i = 0; i < 3; i++)
         {
             Outbox.Post("Hello");
             logger.Error("Error from module");
