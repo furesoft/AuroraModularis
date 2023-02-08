@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using AuroraModularis.Core;
 
-namespace AuroraModularis;
+namespace AuroraModularis.DefaultImplementations;
 
 internal class DefaultSettingsProvider : IModuleSettingsProvider
 {

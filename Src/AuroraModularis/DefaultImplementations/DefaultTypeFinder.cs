@@ -1,8 +1,8 @@
 ﻿using AuroraModularis.Core;
 
-namespace AuroraModularis;
+namespace AuroraModularis.DefaultImplementations;
 
-public class DefaultTypeFinder : ITypeFinder
+internal class DefaultTypeFinder : ITypeFinder
 {
     public Type[] FindTypes<T>()
     {

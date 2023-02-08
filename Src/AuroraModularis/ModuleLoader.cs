@@ -3,6 +3,7 @@ using AuroraModularis.Messaging;
 using System.Collections.Concurrent;
 using System.Reflection;
 using AuroraModularis.Core.Hooks;
+using AuroraModularis.DefaultImplementations;
 
 namespace AuroraModularis;
 
