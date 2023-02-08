@@ -12,8 +12,6 @@ internal class Program
         
         BootstrapperBuilder.StartConfigure()
             .WithAppName("TestConsole")
-            .WithModulesBasePath(Environment.CurrentDirectory)
-            .WithSettingsBasePath(".")
             .AddResourceHook(app)
             .BuildAndStartAsync();
     }

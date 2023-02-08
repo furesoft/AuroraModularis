@@ -11,26 +11,13 @@ public static class BootstrapBuilderExtensions
         return builder;
     }
 
-    public static IBootstrapBuilder WithModulesBasePath(this IBootstrapBuilder builder, string modulesBasePath)
-    {
-        builder.Configuration.ModulesPath = modulesBasePath;
-
-        return builder;
-    }
-
-    public static IBootstrapBuilder WithSettingsBasePath(this IBootstrapBuilder builder, string settingsBasePath)
-    {
-        builder.Configuration.SettingsBasePath = settingsBasePath;
-
-        return builder;
-    }
-
-    public static IBootstrapBuilder WithModuleLoader(this IBootstrapBuilder builder, ModuleLoader loader)
+    public static IBootstrapBuilder WithModuleLoader(this IBootstrapBuilder builder, IModuleLoader loader)
     {
         builder.Configuration.Loader = loader;
 
         return builder;
     }
+    
 
     public static IBootstrapBuilder WithSettingsProvider<T>(this IBootstrapBuilder builder)
         where T : IModuleSettingsProvider, new()

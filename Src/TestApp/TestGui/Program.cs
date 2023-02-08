@@ -16,8 +16,6 @@ internal static class Program
 
         return BootstrapperBuilder.StartConfigure()
             .WithAppName("TestGui")
-            .WithModulesBasePath(Environment.CurrentDirectory)
-            .WithSettingsBasePath(".")
             .BuildAndStartAsync();
     }
 }

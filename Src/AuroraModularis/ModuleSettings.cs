@@ -2,32 +2,42 @@
 
 public class ModuleSettings
 {
-    private readonly string path;
+    private readonly string settingsFilePath;
     private readonly ModuleConfigration config;
 
     internal ModuleSettings(Module module, ModuleConfigration config)
     {
-        path = Path.Combine(config.ModulesPath, module.Name + ".json");
+        settingsFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), config.ApplicationName, module.Name + ".json");
         this.config = config;
+        
+        EnsureDirectoryExists();
     }
 
     public void Save(object data)
     {
-        if (!Directory.Exists(config.SettingsBasePath))
-        {
-            Directory.CreateDirectory(config.SettingsBasePath);
-        }
+        EnsureDirectoryExists();
 
-        config.SettingsProvider.Save(data, path);
+        config.SettingsProvider.Save(data, settingsFilePath);
+    }
+
+    private void EnsureDirectoryExists()
+    {
+        var fileInfo = new FileInfo(settingsFilePath);
+        if (!fileInfo.Directory.Exists)
+        {
+            fileInfo.Directory.Create();
+        }
     }
 
     public object Load(Type type)
     {
-        if (!File.Exists(path))
+        EnsureDirectoryExists();
+        
+        if (!File.Exists(settingsFilePath))
         {
             Save(Activator.CreateInstance(type));
         }
 
-        return config.SettingsProvider.Load(path, type);
+        return config.SettingsProvider.Load(settingsFilePath, type);
     }
 }

@@ -20,31 +20,14 @@ public class ModuleLoader
 
     public void Load(MessageBroker messageBroker)
     {
-        var moduleTypes = new List<Type>();
         var hook = _config.Hooks.GetHook<IModuleLoadingHook>();
         var returningHook = _config.Hooks.GetReturningHook<IModuleLoadingHook>();
 
         ServiceContainer.Current.Register<ITypeFinder>(new DefaultTypeFinder());
 
-        if (!string.IsNullOrEmpty(_config.ModulesPath))
-        {
-            foreach (var modPath in Directory.GetFiles(_config.ModulesPath, "*.dll"))
-            {
-                try
-                {
-                    var moduleType = Assembly.LoadFrom(modPath).GetTypes().FirstOrDefault(type => !type.IsAbstract && type.IsAssignableTo(typeof(Module)));
-                    if (moduleType != null)
-                    {
-                        moduleTypes.Add(moduleType);
-
-                        hook.BeforeLoadModule(moduleType);
-                    }
-                }
-                catch (Exception ex)
-                {
-                }
-            }
-        }
+        var loadingContext = new ModuleLoadingContext(_config);
+        
+        var moduleTypes = _config.Loader.LoadModuleTypes(loadingContext).ToList();
 
         var orderedModulesTypes = moduleTypes.OrderByDescending(GetModulePriority).ToArray();
 

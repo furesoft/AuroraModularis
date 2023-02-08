@@ -6,7 +6,7 @@ using Quartz.Impl;
 
 namespace AuroraModularis;
 
-internal class Bootstrapper
+internal static class Bootstrapper
 {
     public static async Task RunAsync(ModuleConfigration config)
     {
@@ -16,18 +16,14 @@ internal class Bootstrapper
         messageBroker.Start();
 
         ServiceContainer.Current.Register(moduleLoader);
-        moduleLoader.Load(messageBroker);
 
-        if (config.Loader != null)
+        if (config.Loader == null)
         {
-            config.Loader.Load(messageBroker);
-
-            foreach (var module in config.Loader.Modules)
-            {
-                moduleLoader.Modules.Add(module);
-            }
+            throw new InvalidOperationException("Cannot Load Modules without specifying a moduleloader");
         }
-
+        
+        moduleLoader.Load(messageBroker);
+        
         var factory = new StdSchedulerFactory();
         var scheduler = await factory.GetScheduler();
 
