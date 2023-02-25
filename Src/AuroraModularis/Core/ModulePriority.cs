@@ -2,6 +2,8 @@
 
 public enum ModulePriority
 {
+    Lowest,
+    Low,
     Normal,
     High,
     Max

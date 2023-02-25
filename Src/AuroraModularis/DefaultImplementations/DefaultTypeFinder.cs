@@ -11,7 +11,7 @@ internal class DefaultTypeFinder : ITypeFinder
             where !assembly.IsDynamic
             from type in TryGetTypes(assembly)
             where typeof(T).IsAssignableFrom(type) && !type.IsInterface
-            select type).ToArray();
+            select type).DistinctBy(t => t.FullName).ToArray();
     }
 
     public T[] FindAndResolveTypes<T>()
@@ -20,7 +20,7 @@ internal class DefaultTypeFinder : ITypeFinder
             from type in FindTypes<T>()
             select ServiceContainer.Current.Resolve<T>(type)).ToArray();
     }
-    
+
     private static Type[] TryGetTypes(System.Reflection.Assembly s)
     {
         try
