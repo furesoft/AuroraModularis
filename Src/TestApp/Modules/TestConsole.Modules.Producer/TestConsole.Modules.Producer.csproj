@@ -13,7 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Icons.xml" />
+    <EmbeddedResource Include="Resources\**" />
+    <AvaloniaResource Include="Resources\**" />
   </ItemGroup>
 
 </Project>

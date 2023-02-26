@@ -1,9 +1,9 @@
 ﻿using AuroraModularis.Core;
+using AuroraModularis.Core.Hooks;
+using AuroraModularis.DefaultImplementations;
 using AuroraModularis.Messaging;
 using System.Collections.Concurrent;
 using System.Reflection;
-using AuroraModularis.Core.Hooks;
-using AuroraModularis.DefaultImplementations;
 
 namespace AuroraModularis;
 
@@ -26,7 +26,7 @@ public class ModuleLoader
         ServiceContainer.Current.Register<ITypeFinder>(new DefaultTypeFinder());
 
         var loadingContext = new ModuleLoadingContext(_config);
-        
+
         var moduleTypes = _config.Loader.LoadModuleTypes(loadingContext).ToList();
 
         var orderedModulesTypes = moduleTypes.OrderByDescending(GetModulePriority).ToArray();
@@ -41,6 +41,8 @@ public class ModuleLoader
                 moduleTypes.Remove(moduleType);
                 continue;
             }
+
+            hook.BeforeLoadModule(moduleType);
 
             moduleInstance.Inbox = new(messageBroker);
             moduleInstance.Outbox = new(messageBroker);

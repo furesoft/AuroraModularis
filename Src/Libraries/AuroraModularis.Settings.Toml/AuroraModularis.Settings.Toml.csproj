@@ -9,7 +9,8 @@
         <PackageProjectUrl>https://github.com/furesoft/AuroraModularis</PackageProjectUrl>
         <RepositoryUrl>https://github.com/furesoft/AuroraModularis</RepositoryUrl>
         <PackageTags>auroramodularis</PackageTags>
-    </PropertyGroup>
+		<Version>1.0.4</Version>
+	</PropertyGroup>
 
     <ItemGroup>
       <PackageReference Include="Samboy063.Tomlet" Version="5.1.2" />

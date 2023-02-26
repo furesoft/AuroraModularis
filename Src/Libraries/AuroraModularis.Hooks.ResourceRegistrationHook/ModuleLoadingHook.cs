@@ -3,6 +3,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
 using Avalonia.Markup.Xaml;
+using Avalonia.Styling;
 
 namespace AuroraModularis.Hooks.ResourceRegistrationHook;
 
@@ -24,6 +25,7 @@ public class ModuleLoadingHook : IModuleLoadingHook
     {
         RegisterIconsFrom(moduleType);
         RegisterDataTemplates(moduleType);
+        RegisterStylesFrom(moduleType);
     }
 
     public void AfterLoadModule(AuroraModularis.Module module)
@@ -37,6 +39,15 @@ public class ModuleLoadingHook : IModuleLoadingHook
         if (resDictionary is null) return;
 
         _app.Resources.MergedDictionaries.Add(resDictionary);
+    }
+
+    private void RegisterStylesFrom(Type type)
+    {
+        var styles = GetFromResource<Styles>(type, "styles");
+
+        if (styles is null) return;
+        
+        _app.Styles.AddRange(styles);
     }
 
     private void RegisterDataTemplates(Type type)
