@@ -1,5 +1,4 @@
-﻿using System.Security.Permissions;
-using AuroraModularis.Core;
+﻿using AuroraModularis.Core;
 using AuroraModularis.Messaging;
 using Quartz;
 using Quartz.Impl;
@@ -34,8 +33,14 @@ internal static class Bootstrapper
         AppDomain.CurrentDomain.ProcessExit += async (s, e) =>
         {
             await scheduler.Shutdown();
+            
             foreach (var module in moduleLoader.Modules)
             {
+                if (module.UseSettings)
+                {
+                    module.SettingsHandler.Save(module.Settings);
+                }
+                
                 module.OnExit();
             }
         };

@@ -9,7 +9,6 @@
         <PackageProjectUrl>https://github.com/furesoft/AuroraModularis</PackageProjectUrl>
         <RepositoryUrl>https://github.com/furesoft/AuroraModularis</RepositoryUrl>
         <PackageTags>auroramodularis</PackageTags>
-		<Version>1.0.4</Version>
     </PropertyGroup>
 
     <ItemGroup>
@@ -21,4 +20,6 @@
       <ProjectReference Include="..\..\AuroraModularis\AuroraModularis.csproj" />
     </ItemGroup>
 
+    <Import Project="$(SolutionDir)\Version.props" />
+    
 </Project>

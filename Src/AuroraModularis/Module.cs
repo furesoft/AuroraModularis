@@ -28,9 +28,6 @@ public abstract class Module
 
     public virtual void OnExit()
     {
-        if (UseSettings)
-        {
-            SettingsHandler.Save(Settings);
-        }
+        
     }
 }

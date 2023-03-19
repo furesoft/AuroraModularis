@@ -7,5 +7,5 @@
 	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
-	<Import Project="$(SolutionDir)\Version.props" />
+    <Import Project="$(SolutionDir)\Version.props"/>
 </Project>

@@ -8,11 +8,11 @@
         <Description>This extension for AuroraModularis allows to use Xml files for settings</Description>
         <PackageProjectUrl>https://github.com/furesoft/AuroraModularis</PackageProjectUrl>
         <RepositoryUrl>https://github.com/furesoft/AuroraModularis</RepositoryUrl>
-		<Version>1.0.4</Version>
     </PropertyGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\..\AuroraModularis\AuroraModularis.csproj" />
     </ItemGroup>
 
+    <Import Project="$(SolutionDir)\Version.props" />
 </Project>
