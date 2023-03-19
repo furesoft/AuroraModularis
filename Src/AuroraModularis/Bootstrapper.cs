@@ -47,28 +47,27 @@ internal static class Bootstrapper
     {
         foreach (var module in moduleLoader.Modules)
         {
-            if (module is IScheduledModule scheduling)
+            if (module is not IScheduledModule scheduling) continue;
+            
+            foreach (var expr in scheduling.Jobs)
             {
-                foreach (var expr in scheduling.Jobs)
-                {
-                    var jobname = Guid.NewGuid() + module.Name + expr.Item2.GetType().FullName;
-                    IJobDetail job = JobBuilder.Create(expr.Item2.GetType())
+                var jobname = Guid.NewGuid() + module.Name + expr.Item2.GetType().FullName;
+                var job = JobBuilder.Create(expr.Item2.GetType())
                     .WithIdentity(jobname, "group1")
                     .Build();
 
-                    ITrigger trigger = TriggerBuilder.Create()
+                var trigger = TriggerBuilder.Create()
                     .WithIdentity(jobname, "group1")
                     .WithCronSchedule(expr.Item1)
                     .ForJob(jobname, "group1")
                     .Build();
 
-                    scheduling.Scheduler = scheduler;
+                scheduling.Scheduler = scheduler;
 
-                    await scheduler.ScheduleJob(job, trigger);
-                }
-
-                await scheduler.Start();
+                await scheduler.ScheduleJob(job, trigger);
             }
+
+            await scheduler.Start();
         }
     }
 }
