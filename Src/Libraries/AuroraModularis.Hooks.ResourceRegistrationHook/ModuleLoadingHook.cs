@@ -43,7 +43,7 @@ public class ModuleLoadingHook : IModuleLoadingHook
 
     private void RegisterStylesFrom(Type type)
     {
-        var styles = GetFromResource<Styles>(type, "styles");
+        var styles = GetFromResource<Styles>(type, "Styles");
 
         if (styles is null) return;
         

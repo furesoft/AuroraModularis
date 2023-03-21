@@ -3,6 +3,9 @@ using AuroraModularis.Core;
 
 namespace AuroraModularis.DefaultImplementations;
 
+/// <summary>
+/// Json Settings Provider
+/// </summary>
 internal class DefaultSettingsProvider : IModuleSettingsProvider
 {
     public object Load(string path, Type type)

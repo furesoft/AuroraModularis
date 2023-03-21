@@ -5,8 +5,16 @@ using Quartz.Impl;
 
 namespace AuroraModularis;
 
+/// <summary>
+/// A helper class to bootstrap an application
+/// </summary>
 internal static class Bootstrapper
 {
+    /// <summary>
+    /// Run the bootstrapper
+    /// </summary>
+    /// <param name="config"></param>
+    /// <exception cref="InvalidOperationException"></exception>
     public static async Task RunAsync(ModuleConfigration config)
     {
         ModuleLoader moduleLoader = new(config);
