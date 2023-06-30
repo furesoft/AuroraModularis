@@ -5,9 +5,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Title>AuroraModularis.Modules.Diagnostics.Sentry.Models</Title>
+    <Title>AuroraModularis.Modules.I18N</Title>
     <Authors>furesoft</Authors>
-    <Description>A framework to make modular monolith applications</Description>
+    <Description>Sentry Module For AuroraModularis</Description>
     <PackageProjectUrl>https://github.com/furesoft/AuroraModularis</PackageProjectUrl>
     <RepositoryUrl>https://github.com/furesoft/AuroraModularis</RepositoryUrl>
     <PackageTags>modular;monolith;framework</PackageTags>
@@ -15,7 +15,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Sentry" Version="3.31.0" />
+    <PackageReference Include="AuroraModularis" Version="1.0.38" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AuroraModularis.Modules.I18N.Models\AuroraModularis.Modules.I18N.Models.csproj" />
   </ItemGroup>
 
   <Import Project="$(SolutionDir)\Version.props" />

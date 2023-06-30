@@ -53,6 +53,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuroraModularis.Modules.Dia
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuroraModularis.Modules.Diagnostics.Sentry.Models", "Modules\Sentry\AuroraModularis.Modules.Diagnostics.Sentry.Models\AuroraModularis.Modules.Diagnostics.Sentry.Models.csproj", "{E7B9DF1A-3B21-4C07-B4FF-F4EC5F45FF19}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "I18N", "I18N", "{5CE8F9A9-EFBB-4D9B-BCBD-FCE1AAE576D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuroraModularis.Modules.I18N", "Modules\I18N\AuroraModularis.Modules.I18N\AuroraModularis.Modules.I18N.csproj", "{44C53FCF-52ED-42E5-85BF-C5892E8A7652}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuroraModularis.Modules.I18N.Models", "Modules\I18N\AuroraModularis.Modules.I18N.Models\AuroraModularis.Modules.I18N.Models.csproj", "{E2E3A836-FD5E-43E1-8213-3D4233E58919}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuroraModularis.I18N.MsBuild", "Modules\I18N\AuroraModularis.I18N.MsBuild\AuroraModularis.I18N.MsBuild.csproj", "{56C91342-842F-4BBE-B17D-8CA45D626F2B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -115,6 +123,18 @@ Global
 		{E7B9DF1A-3B21-4C07-B4FF-F4EC5F45FF19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7B9DF1A-3B21-4C07-B4FF-F4EC5F45FF19}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7B9DF1A-3B21-4C07-B4FF-F4EC5F45FF19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44C53FCF-52ED-42E5-85BF-C5892E8A7652}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44C53FCF-52ED-42E5-85BF-C5892E8A7652}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44C53FCF-52ED-42E5-85BF-C5892E8A7652}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44C53FCF-52ED-42E5-85BF-C5892E8A7652}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2E3A836-FD5E-43E1-8213-3D4233E58919}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2E3A836-FD5E-43E1-8213-3D4233E58919}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2E3A836-FD5E-43E1-8213-3D4233E58919}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2E3A836-FD5E-43E1-8213-3D4233E58919}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56C91342-842F-4BBE-B17D-8CA45D626F2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56C91342-842F-4BBE-B17D-8CA45D626F2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56C91342-842F-4BBE-B17D-8CA45D626F2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56C91342-842F-4BBE-B17D-8CA45D626F2B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -138,6 +158,10 @@ Global
 		{365BF31C-8DC6-4EC0-89CE-978CE2A45650} = {6DD0A79D-647E-4E91-85D2-3967D398F134}
 		{BA9CC566-92D3-45D5-A627-98511FE96FAF} = {365BF31C-8DC6-4EC0-89CE-978CE2A45650}
 		{E7B9DF1A-3B21-4C07-B4FF-F4EC5F45FF19} = {365BF31C-8DC6-4EC0-89CE-978CE2A45650}
+		{5CE8F9A9-EFBB-4D9B-BCBD-FCE1AAE576D5} = {6DD0A79D-647E-4E91-85D2-3967D398F134}
+		{44C53FCF-52ED-42E5-85BF-C5892E8A7652} = {5CE8F9A9-EFBB-4D9B-BCBD-FCE1AAE576D5}
+		{E2E3A836-FD5E-43E1-8213-3D4233E58919} = {5CE8F9A9-EFBB-4D9B-BCBD-FCE1AAE576D5}
+		{56C91342-842F-4BBE-B17D-8CA45D626F2B} = {5CE8F9A9-EFBB-4D9B-BCBD-FCE1AAE576D5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F4DB5578-7615-476B-A10C-00253FB6BADF}

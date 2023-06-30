@@ -1,11 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
+        <OutputType>Library</OutputType>
         <TargetFramework>net7.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
-        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-        <Title>AuroraModularis.Modules.Diagnostics.Sentry</Title>
+        <Title>AuroraModularis.I18N.MsBuild</Title>
         <Authors>furesoft</Authors>
         <Description>Sentry Module For AuroraModularis</Description>
         <PackageProjectUrl>https://github.com/furesoft/AuroraModularis</PackageProjectUrl>
@@ -15,12 +13,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="AuroraModularis" Version="1.0.38" />
-        <PackageReference Include="Sentry" Version="3.31.0" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <ProjectReference Include="..\AuroraModularis.Modules.Diagnostics.Sentry.Models\AuroraModularis.Modules.Diagnostics.Sentry.Models.csproj" />
+      <PackageReference Include="Microsoft.Build.Framework" Version="17.6.3" />
+      <PackageReference Include="Microsoft.Build.Utilities.Core" Version="17.6.3" />
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     </ItemGroup>
 
     <Import Project="$(SolutionDir)\Version.props" />
