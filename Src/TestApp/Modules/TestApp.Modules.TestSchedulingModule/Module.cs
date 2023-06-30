@@ -1,5 +1,4 @@
-﻿using AuroraModularis;
-using AuroraModularis.Core;
+﻿using AuroraModularis.Core;
 using Quartz;
 
 namespace TestApp.Modules.TestSchedulingModule;
