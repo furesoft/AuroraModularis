@@ -9,6 +9,9 @@ A main application bootstraps the modules. A module consists of two librarys: On
 
 The main application has to start a bootstrapper. A bootstrapper can be configured with the `BootstrapperBuilder`. Modules can be loaded from any path.
 
+![image](https://github.com/furesoft/AuroraModularis/assets/4117602/7acd4e15-ccd0-4f45-9afa-105df077edc0)
+
+
 ### Extending the behavior of the bootstrapper
 
 The bootstrapper has mechanisms called `Hooks` to affect the behavior. The `IModuleLoadingHook` can decide if modules should be loaded or do other stuff on load, like register resources globally for UI. The `ISettingsLoadingHook` can inject specific custom settings to a module. This behavior can be useful if you want dynamic settings. A good example for dynamic settings are paths. Per default module settings are serialized as json file but you can implement your own `SettingsProvider` to use other formats. There are also some formats available at nuget.
