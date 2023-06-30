@@ -9,7 +9,7 @@ A main application bootstraps the modules. A module consists of two librarys: On
 
 The main application has to start a bootstrapper. A bootstrapper can be configured with the `BootstrapperBuilder`. Modules can be loaded from any path.
 
-![image](https://github.com/furesoft/AuroraModularis/assets/4117602/7acd4e15-ccd0-4f45-9afa-105df077edc0)
+![image](https://github.com/furesoft/AuroraModularis/assets/4117602/bf4e6d1d-2396-46ea-9bd2-252994b14699)
 
 
 ### Extending the behavior of the bootstrapper
