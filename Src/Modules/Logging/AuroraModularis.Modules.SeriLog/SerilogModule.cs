@@ -3,9 +3,11 @@ using Serilog;
 
 namespace AuroraModularis.Modules.Logging.SeriLog;
 
-[Priority]
-public class Module : AuroraModularis.Module
+[Priority(ModulePriority.Max)]
+public class SerilogModule : AuroraModularis.Module
 {
+    public override Type SettingsType => typeof(SerilogOptions);
+
     public override Task OnStart(ServiceContainer serviceContainer)
     {
         return Task.CompletedTask;
@@ -14,7 +16,6 @@ public class Module : AuroraModularis.Module
     public override void OnInit()
     {
         UseSettings = true;
-        Settings = new SettingsModel();
     }
 
     public override void RegisterServices(ServiceContainer serviceContainer)
@@ -22,8 +23,8 @@ public class Module : AuroraModularis.Module
         var logConfig = new LoggerConfiguration()
         .WriteTo.Console();
 
-        var settings = (SettingsModel)Settings;
-
+        var settings = (SerilogOptions) Settings;
+        
         if (settings.LogFile != null)
         {
             logConfig.WriteTo.File(settings.LogFile);

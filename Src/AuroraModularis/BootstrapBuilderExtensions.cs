@@ -17,6 +17,13 @@ public static class BootstrapBuilderExtensions
 
         return builder;
     }
+
+    public static IBootstrapBuilder WithOptions<T>(this IBootstrapBuilder builder, T options)
+    {
+        ServiceContainer.Current.Register(options).AsSingleton();
+
+        return builder;
+    }
     
 
     public static IBootstrapBuilder WithSettingsProvider<T>(this IBootstrapBuilder builder)

@@ -1,19 +1,15 @@
 ﻿using AuroraModularis;
-using AuroraModularis.Hooks.ResourceRegistrationHook;
-using Avalonia;
+using AuroraModularis.Modules.Logging.SeriLog;
 
 namespace TestConsole;
 
 internal class Program
 {
-    
-    private static void Main(string[] args)
+    private static Task Main(string[] args)
     {
-        var app = new Application();
-        
-        BootstrapperBuilder.StartConfigure()
+        return BootstrapperBuilder.StartConfigure()
             .WithAppName("TestConsole")
-            .AddResourceHook(app)
+            .WithOptions(new SerilogOptions(){ WriteToDebug = true})
             .BuildAndStartAsync();
     }
 }
