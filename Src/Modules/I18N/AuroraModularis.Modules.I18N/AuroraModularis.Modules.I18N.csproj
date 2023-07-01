@@ -15,11 +15,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AuroraModularis" Version="1.0.38" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\AuroraModularis\AuroraModularis.csproj" />
     <ProjectReference Include="..\AuroraModularis.Modules.I18N.Models\AuroraModularis.Modules.I18N.Models.csproj" />
   </ItemGroup>
 

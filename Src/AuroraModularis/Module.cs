@@ -10,27 +10,18 @@ public abstract class Module
 {
     internal ModuleSettings SettingsHandler;
 
-    /// <summary>
-    /// A unique module name. If not specified the type's namespace will be used
-    /// </summary>
-    public virtual string Name
-    { get { return this.GetType().Namespace; } }
-
-    /// <summary>
-    /// An inbox to receive messages from other modules
-    /// </summary>
-    public Inbox Inbox { get; internal set; }
+    public virtual string Name => GetType().FullName;
     
-    /// <summary>
-    /// An outbox to send messages to other modules
-    /// </summary>
-    public Outbox Outbox { get; internal set; }
-
+    public Inbox Inbox { get; set; }
+    public Outbox Outbox { get; set; }
+    
     /// <summary>
     /// The module specific settings
     /// </summary>
     public object Settings { get; set; }
-    
+
+    public virtual Type SettingsType => null;
+
     /// <summary>
     /// If UseSettings is true the Settings object will be automaticly serialized/deserialized on start/end of the process
     /// </summary>

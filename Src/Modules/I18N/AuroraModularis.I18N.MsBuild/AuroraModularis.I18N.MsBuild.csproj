@@ -10,6 +10,7 @@
         <RepositoryUrl>https://github.com/furesoft/AuroraModularis</RepositoryUrl>
         <PackageTags>modular;monolith;framework</PackageTags>
         <IncludeSymbols>True</IncludeSymbols>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
 
     <ItemGroup>

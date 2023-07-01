@@ -11,6 +11,15 @@ public class FileModuleLoader : IModuleLoader
     }
     public string Path { get; set; }
     
+    static bool IsModuleType(Type t)
+    {
+        if (t.BaseType == null) return false;
+
+        if (t.BaseType.FullName == typeof(Module).FullName) return true;
+        
+        return t.BaseType.FullName.StartsWith(typeof(Module).FullName) || IsModuleType(t.BaseType);
+    }
+    
     public IEnumerable<Type> LoadModuleTypes(ModuleLoadingContext context)
     {
         var moduleTypes = new List<Type>();
@@ -18,12 +27,12 @@ public class FileModuleLoader : IModuleLoader
         {
             try
             {
-                var moduleType = Assembly.LoadFrom(modPath).GetTypes().FirstOrDefault(type => !type.IsAbstract && type.IsAssignableTo(typeof(Module)));
+                var types = Assembly.LoadFrom(modPath).GetTypes().Where(_=> !_.IsAbstract && !_.IsInterface);
+                
+                var moduleType = types.FirstOrDefault(IsModuleType);
                 if (moduleType != null)
                 {
                     moduleTypes.Add(moduleType);
-
-                    
                 }
             }
             catch (Exception ex)

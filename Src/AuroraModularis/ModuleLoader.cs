@@ -34,7 +34,7 @@ public class ModuleLoader
         for (int i = 0; i < orderedModulesTypes.Length; i++)
         {
             var moduleType = orderedModulesTypes[i];
-            var moduleInstance = ServiceContainer.Current.Resolve<Module>(moduleType);
+            var moduleInstance = (Module) ServiceContainer.Current.GetService(moduleType);
 
             if (returningHook != null && !returningHook.ShouldLoadModule(moduleInstance))
             {
@@ -51,7 +51,14 @@ public class ModuleLoader
 
             if (moduleInstance.UseSettings)
             {
-                InitSettings(_config, moduleInstance);
+                if (moduleInstance.SettingsType == null)
+                {
+                    InitSettings(_config, moduleInstance);
+                }
+                else
+                {
+                    moduleInstance.Settings = ServiceContainer.Current.GetService(moduleInstance.SettingsType);
+                }
             }
 
             Modules.Add(moduleInstance);
