@@ -31,6 +31,8 @@ public class ModuleLoader
 
         var orderedModulesTypes = moduleTypes.OrderByDescending(GetModulePriority).ToArray();
 
+        _config.Hooks.GetHook<IModulesLoadedHook>()?.BeforeModulesLoaded();
+        
         for (int i = 0; i < orderedModulesTypes.Length; i++)
         {
             var moduleType = orderedModulesTypes[i];
@@ -67,6 +69,8 @@ public class ModuleLoader
 
             hook?.AfterLoadModule(moduleInstance);
         }
+
+        _config.Hooks.GetHook<IModulesLoadedHook>()?.AfterModulesLoaded();
     }
 
     private void InitSettings(ModuleConfigration config, Module moduleInstance)
