@@ -15,7 +15,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Sentry" Version="3.31.0" />
+    <PackageReference Include="Sentry" Version="3.34.0" />
   </ItemGroup>
 
   <Import Project="$(SolutionDir)\Version.props" />

@@ -6,35 +6,39 @@ namespace AuroraModularis.Messaging;
 
 public class MessageBroker
 {
-    private ConcurrentBag<Inbox> inboxes = new();
+    private readonly ConcurrentBag<Inbox> _inboxes = new();
     private MailboxProcessor<Message> mailboxProcessor;
+
+    public IReadOnlyCollection<Inbox> GetInboxes() => _inboxes;
 
     public void Start()
     {
-        mailboxProcessor = MailboxProcessor.Start<Message>(async _ =>
+        mailboxProcessor = MailboxProcessor.Start<Message>(ProcessMessages);
+        mailboxProcessor.Errors.Subscribe(OnError);
+    }
+
+    private async Task ProcessMessages(MailboxProcessor<Message> _)
+    {
+        while (true)
         {
-            while (true)
+            var message = await _.Receive();
+
+            bool hasBeenInvoked = false;
+            foreach (var inbox in _inboxes)
             {
-                var message = await _.Receive();
-
-                bool hasBeenInvoked = false;
-                foreach (var inbox in inboxes)
-                {
-                    hasBeenInvoked = inbox.InvokeIfPresent(message);
-                }
-
-                if (!hasBeenInvoked && message.Repost)
-                {
-                    mailboxProcessor.Post(message);
-                }
+                hasBeenInvoked = inbox.InvokeIfPresent(message);
             }
-        });
-        //    mailboxProcessor.Errors.Subscribe(OnError);
+
+            if (!hasBeenInvoked && message.Repost)
+            {
+                mailboxProcessor.Post(message);
+            }
+        }
     }
 
     internal void AddInbox(Inbox inbox)
     {
-        inboxes.Add(inbox);
+        _inboxes.Add(inbox);
     }
 
     internal void Post(object message, bool repost)

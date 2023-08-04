@@ -61,6 +61,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuroraModularis.Modules.I18
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuroraModularis.I18N.MsBuild", "Modules\I18N\AuroraModularis.I18N.MsBuild\AuroraModularis.I18N.MsBuild.csproj", "{56C91342-842F-4BBE-B17D-8CA45D626F2B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "TestProject\TestProject.csproj", "{43CAAFD6-35F0-46DD-BD15-F0F368FB5112}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -135,6 +137,10 @@ Global
 		{56C91342-842F-4BBE-B17D-8CA45D626F2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56C91342-842F-4BBE-B17D-8CA45D626F2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56C91342-842F-4BBE-B17D-8CA45D626F2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43CAAFD6-35F0-46DD-BD15-F0F368FB5112}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43CAAFD6-35F0-46DD-BD15-F0F368FB5112}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43CAAFD6-35F0-46DD-BD15-F0F368FB5112}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43CAAFD6-35F0-46DD-BD15-F0F368FB5112}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
