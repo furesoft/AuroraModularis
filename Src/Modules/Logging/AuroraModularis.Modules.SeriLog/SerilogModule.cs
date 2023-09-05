@@ -8,11 +8,6 @@ public class SerilogModule : AuroraModularis.Module
 {
     public override Type SettingsType => typeof(SerilogOptions);
 
-    public override Task OnStart(ServiceContainer serviceContainer)
-    {
-        return Task.CompletedTask;
-    }
-
     public override void OnInit()
     {
         UseSettings = true;

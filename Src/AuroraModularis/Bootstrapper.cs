@@ -53,6 +53,8 @@ internal static class Bootstrapper
             }
         };
 
+        Task.WaitAll(moduleLoader.Modules.Where(_ => _ is IServiceInitializer)
+            .OfType<IServiceInitializer>().Select(_ => _.Init()).ToArray());
         Task.WaitAll(moduleLoader.Modules.Select(_ => _.OnStart(ServiceContainer.Current)).ToArray());
     }
 

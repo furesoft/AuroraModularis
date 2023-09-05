@@ -16,6 +16,7 @@ public class ResourcesLocalisationService : ILocalisationService
 
         var resourceName = localeNames.FirstOrDefault(_ => _ == Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName) ?? "en";
 
+        //ToDo: does not work for other assemblies
         var strm = GetType().Assembly.GetManifestResourceStream($"{resourcePath}.{resourceName}.json");
         var json = new StreamReader(strm!).ReadToEnd();
 

@@ -99,3 +99,5 @@ O
 AuroraModularis/ModuleLoader.cs,4\5\4577e041f1e6df5766d24b5a9d3cf505ba3bc5be
 Z
 *AuroraModularis/Messaging/MessageBroker.cs,6\4\6430807501143148f021eeef04d0eabb9f359ca9
+R
+"TestProject/MessageBroakerTests.cs,f\d\fd9107396d94fbe7153fe6c1e12e954823651b7e

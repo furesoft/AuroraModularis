@@ -6,7 +6,7 @@ namespace AuroraModularis.Modules.Diagnostics.Sentry;
 internal class FeedbackServiceImpl : IFeedbackService
 {
     public void SendFeedback(string message, string title = "User feedback.", 
-        string email = "fake@slithin.de")
+        string email = "fake@fake.fk")
     {
         var eventId = SentrySdk.CaptureMessage(title);
         

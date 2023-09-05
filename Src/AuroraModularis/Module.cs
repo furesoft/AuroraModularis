@@ -40,7 +40,10 @@ public abstract class Module
     /// </summary>
     /// <param name="serviceContainer"></param>
     /// <returns></returns>
-    public abstract Task OnStart(ServiceContainer serviceContainer);
+    public virtual Task OnStart(ServiceContainer serviceContainer)
+    {
+        return Task.CompletedTask;
+    }
 
     /// <summary>
     /// Method to do initialisation of a module
