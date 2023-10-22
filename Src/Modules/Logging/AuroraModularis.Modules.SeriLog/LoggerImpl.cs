@@ -21,4 +21,9 @@ internal class LoggerImpl : ILogger
     {
         _logger.Information(message);
     }
+
+    public void Debug(string message)
+    {
+        _logger.Debug(message);
+    }
 }
