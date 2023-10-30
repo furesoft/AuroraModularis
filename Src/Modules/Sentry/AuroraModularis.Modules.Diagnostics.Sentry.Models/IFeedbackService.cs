@@ -10,5 +10,5 @@ public interface IFeedbackService
     /// </summary>
     /// <param name="message"></param>
     void SendFeedback(string message, string title = "An event that will receive user feedback.", 
-        string email = "fake@slithin.de");
+        string email = "fake@faker.fk");
 }

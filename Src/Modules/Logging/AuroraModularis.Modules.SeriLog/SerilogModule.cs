@@ -4,7 +4,7 @@ using Serilog;
 namespace AuroraModularis.Modules.Logging.SeriLog;
 
 [Priority(ModulePriority.Max)]
-public class SerilogModule : AuroraModularis.Module
+public class SerilogModule : Module
 {
     public override Type SettingsType => typeof(SerilogOptions);
 
