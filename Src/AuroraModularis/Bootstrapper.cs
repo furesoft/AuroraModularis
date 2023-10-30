@@ -53,9 +53,10 @@ internal static class Bootstrapper
             }
         };
 
-        Task.WaitAll(moduleLoader.Modules.Where(_ => _ is IServiceInitializer)
+        await Task.WhenAll(moduleLoader.Modules.Where(_ => _ is IServiceInitializer)
             .OfType<IServiceInitializer>().Select(_ => _.Init()).ToArray());
-        Task.WaitAll(moduleLoader.Modules.Select(_ => _.OnStart(ServiceContainer.Current)).ToArray());
+            
+        await Task.WhenAll(moduleLoader.Modules.Select(_ => _.OnStart(ServiceContainer.Current)).ToArray());
     }
 
     private static async Task ScheduleJobs(ModuleLoader moduleLoader, IScheduler scheduler)
